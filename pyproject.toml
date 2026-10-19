@@ -1,0 +1,9 @@
+[project]
+name = "facemetrics-ai"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "Reproducible facial landmark learning and explainable 2D geometry"
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["."]

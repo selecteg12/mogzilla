@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: facemetrics-ai
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeployTrigger: "off"

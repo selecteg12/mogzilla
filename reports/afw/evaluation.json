@@ -1,0 +1,164 @@
+{
+  "status": "evaluated",
+  "selected_architecture": "heatmaps",
+  "selected_checkpoint": "training\\experiments\\afw-heatmaps\\best.pt",
+  "parameters": 134708,
+  "dataset": {
+    "dataset": "300w",
+    "root": "C:\\Users\\User\\Documents\\ChatGPT\\facelab\\training\\datasets\\300w",
+    "counts": {
+      "train": 231,
+      "val": 49,
+      "test": 57
+    },
+    "sources": {
+      "afw": 337
+    },
+    "seed": 42,
+    "manifest_sha256": "dd55cc425880142637f06490f23ada54fc16830a0de64a5a3beeb51775f4e954",
+    "coordinate_origin": "zero-based",
+    "protocol": "afw-only",
+    "unique_images": 185,
+    "split_unit": "SHA-256 of decoded source image; all faces in the same image stay together",
+    "split_policy": "70/15/15 by image hash; NOT the official 300-W benchmark",
+    "limitations": "Identity metadata unavailable: identity-independent splitting cannot be guaranteed. GT-derived crops approximate user-selected ROI."
+  },
+  "test": {
+    "samples": 57,
+    "nme": 0.08939238637685776,
+    "median_nme": 0.08058182895183563,
+    "p90_nme": 0.13657042384147644,
+    "mean_localization_error_px": 10.36677223946371,
+    "failure_threshold": 0.1,
+    "failure_rate": 0.24561403508771928
+  },
+  "geometry_error_against_annotation": {
+    "eye_tilt_0": {
+      "mean_absolute_error": 7.9848919298245615,
+      "p90_absolute_error": 17.027569999999994,
+      "samples": 57
+    },
+    "eye_aspect_0": {
+      "mean_absolute_error": 1.223398392857143,
+      "p90_absolute_error": 2.42138,
+      "samples": 56
+    },
+    "brow_gap_0": {
+      "mean_absolute_error": 0.02021666666666667,
+      "p90_absolute_error": 0.045790000000000004,
+      "samples": 57
+    },
+    "brow_angle_0": {
+      "mean_absolute_error": 7.822025438596492,
+      "p90_absolute_error": 17.438715999999996,
+      "samples": 57
+    },
+    "brow_arch_0": {
+      "mean_absolute_error": 0.06479473684210527,
+      "p90_absolute_error": 0.13547599999999999,
+      "samples": 57
+    },
+    "eye_tilt_1": {
+      "mean_absolute_error": 5.121601754385964,
+      "p90_absolute_error": 10.368965999999999,
+      "samples": 57
+    },
+    "eye_aspect_1": {
+      "mean_absolute_error": 1.2114828571428569,
+      "p90_absolute_error": 2.2162749999999996,
+      "samples": 56
+    },
+    "brow_gap_1": {
+      "mean_absolute_error": 0.024653157894736846,
+      "p90_absolute_error": 0.05161399999999999,
+      "samples": 57
+    },
+    "brow_angle_1": {
+      "mean_absolute_error": 6.55683052631579,
+      "p90_absolute_error": 15.685145999999998,
+      "samples": 57
+    },
+    "brow_arch_1": {
+      "mean_absolute_error": 0.06451263157894738,
+      "p90_absolute_error": 0.11800999999999999,
+      "samples": 57
+    },
+    "intereye": {
+      "mean_absolute_error": 0.05986982456140351,
+      "p90_absolute_error": 0.10132000000000001,
+      "samples": 57
+    },
+    "eye_tilt_difference": {
+      "mean_absolute_error": 8.872699824561403,
+      "p90_absolute_error": 21.102079999999994,
+      "samples": 57
+    },
+    "eye_aspect_difference": {
+      "mean_absolute_error": 0.9772196428571428,
+      "p90_absolute_error": 2.057835,
+      "samples": 56
+    },
+    "jaw_width": {
+      "mean_absolute_error": 0.06868157894736843,
+      "p90_absolute_error": 0.13030800000000003,
+      "samples": 57
+    },
+    "lower_middle": {
+      "mean_absolute_error": 0.15176280701754388,
+      "p90_absolute_error": 0.34925799999999996,
+      "samples": 57
+    },
+    "width_height": {
+      "mean_absolute_error": 0.1428015789473684,
+      "p90_absolute_error": 0.248318,
+      "samples": 57
+    },
+    "asymmetry": {
+      "mean_absolute_error": 0.0199740350877193,
+      "p90_absolute_error": 0.039046,
+      "samples": 57
+    },
+    "eye_spacing": {
+      "mean_absolute_error": 0.2711821052631579,
+      "p90_absolute_error": 0.46172199999999997,
+      "samples": 57
+    },
+    "mouth_nose": {
+      "mean_absolute_error": 0.21472456140350882,
+      "p90_absolute_error": 0.4810179999999999,
+      "samples": 57
+    }
+  },
+  "normalization": "WFLW: pupil 96\u201397; 300-W: outer corners 36\u201345. NME is a fraction, not percent.",
+  "selection": "Minimum validation NME only. Test not used for checkpoint or architecture selection.",
+  "comparison": [
+    {
+      "architecture": "coordinates",
+      "validation": {
+        "samples": 49,
+        "nme": 0.0944085419178009,
+        "median_nme": 0.07887283712625504,
+        "p90_nme": 0.1519491821527481,
+        "mean_localization_error_px": 11.006223842275274,
+        "failure_threshold": 0.1,
+        "failure_rate": 0.24489795918367346
+      },
+      "parameters": 639352,
+      "checkpoint": "training\\experiments\\afw-coordinates\\best.pt"
+    },
+    {
+      "architecture": "heatmaps",
+      "validation": {
+        "samples": 49,
+        "nme": 0.0901871994137764,
+        "median_nme": 0.07907110452651978,
+        "p90_nme": 0.11816345900297165,
+        "mean_localization_error_px": 10.546283663788227,
+        "failure_threshold": 0.1,
+        "failure_rate": 0.22448979591836735
+      },
+      "parameters": 134708,
+      "checkpoint": "training\\experiments\\afw-heatmaps\\best.pt"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+name: Verify release
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  container:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Build the complete application
+        run: docker build --tag facemetrics-ai:verify .
+      - name: Start the application
+        run: docker run --detach --name facemetrics-verify --publish 127.0.0.1:8000:8000 facemetrics-ai:verify
+      - name: Check API, UI, gallery, and real model inference
+        run: python3 scripts/check_deployment.py http://127.0.0.1:8000 --wait-seconds 45
+      - name: Container diagnostics
+        if: always()
+        run: docker logs facemetrics-verify

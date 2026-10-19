@@ -1,0 +1,287 @@
+[
+  {
+    "image": "afw/1051618982_1.jpg",
+    "nme": 0.05268720164895058,
+    "localization_error_px": 7.7683892805363675
+  },
+  {
+    "image": "afw/1295311477_1.jpg",
+    "nme": 0.09173094481229782,
+    "localization_error_px": 11.960282833593679
+  },
+  {
+    "image": "afw/134212_1.jpg",
+    "nme": 0.06331752985715866,
+    "localization_error_px": 7.917847711068179
+  },
+  {
+    "image": "afw/134212_2.jpg",
+    "nme": 0.06109847128391266,
+    "localization_error_px": 7.400054214732062
+  },
+  {
+    "image": "afw/156474078_1.jpg",
+    "nme": 0.14163868129253387,
+    "localization_error_px": 16.749621965293482
+  },
+  {
+    "image": "afw/156474078_2.jpg",
+    "nme": 0.1699466109275818,
+    "localization_error_px": 18.404037545593003
+  },
+  {
+    "image": "afw/1634816_1.jpg",
+    "nme": 0.06748563051223755,
+    "localization_error_px": 8.18916291028494
+  },
+  {
+    "image": "afw/1636651575_1.jpg",
+    "nme": 0.08323350548744202,
+    "localization_error_px": 11.087574703201554
+  },
+  {
+    "image": "afw/18489332_1.jpg",
+    "nme": 0.08454017341136932,
+    "localization_error_px": 5.175093236356633
+  },
+  {
+    "image": "afw/18489332_10.jpg",
+    "nme": 0.18107229471206665,
+    "localization_error_px": 8.491177919019684
+  },
+  {
+    "image": "afw/18489332_11.jpg",
+    "nme": 0.11216060817241669,
+    "localization_error_px": 4.644960235809985
+  },
+  {
+    "image": "afw/18489332_2.jpg",
+    "nme": 0.09464048594236374,
+    "localization_error_px": 5.069509020602609
+  },
+  {
+    "image": "afw/18489332_4.jpg",
+    "nme": 0.10345801711082458,
+    "localization_error_px": 5.231704988993033
+  },
+  {
+    "image": "afw/18489332_5.jpg",
+    "nme": 0.08731551468372345,
+    "localization_error_px": 4.915025562038882
+  },
+  {
+    "image": "afw/18489332_7.jpg",
+    "nme": 0.07877136021852493,
+    "localization_error_px": 5.5359310033747535
+  },
+  {
+    "image": "afw/199759840_1.jpg",
+    "nme": 0.08632095158100128,
+    "localization_error_px": 7.67739626037146
+  },
+  {
+    "image": "afw/2147052512_1.jpg",
+    "nme": 0.07148050516843796,
+    "localization_error_px": 14.762242307525593
+  },
+  {
+    "image": "afw/2233672250_1.jpg",
+    "nme": 0.0754142701625824,
+    "localization_error_px": 9.079992306370741
+  },
+  {
+    "image": "afw/2233672250_2.jpg",
+    "nme": 0.08590798079967499,
+    "localization_error_px": 11.018383950729186
+  },
+  {
+    "image": "afw/2404040793_1.jpg",
+    "nme": 0.06631844490766525,
+    "localization_error_px": 14.160463188705553
+  },
+  {
+    "image": "afw/3210734866_1.jpg",
+    "nme": 0.05658191815018654,
+    "localization_error_px": 3.7007419790117297
+  },
+  {
+    "image": "afw/3662810723_1.jpg",
+    "nme": 0.05992652475833893,
+    "localization_error_px": 11.424213833853264
+  },
+  {
+    "image": "afw/3858593140_1.jpg",
+    "nme": 0.06305718421936035,
+    "localization_error_px": 4.699302435998106
+  },
+  {
+    "image": "afw/3858593140_2.jpg",
+    "nme": 0.15618741512298584,
+    "localization_error_px": 10.65825551067399
+  },
+  {
+    "image": "afw/4082680322_1.jpg",
+    "nme": 0.08520174771547318,
+    "localization_error_px": 4.798508113915591
+  },
+  {
+    "image": "afw/4145388945_1.jpg",
+    "nme": 0.07738492637872696,
+    "localization_error_px": 9.068761328942509
+  },
+  {
+    "image": "afw/4145388945_2.jpg",
+    "nme": 0.05432230979204178,
+    "localization_error_px": 9.5764536108029
+  },
+  {
+    "image": "afw/4145388945_3.jpg",
+    "nme": 0.13234004378318787,
+    "localization_error_px": 24.1498484231118
+  },
+  {
+    "image": "afw/4250120238_1.jpg",
+    "nme": 0.18301881849765778,
+    "localization_error_px": 28.402521121345146
+  },
+  {
+    "image": "afw/437595409_1.jpg",
+    "nme": 0.06608223915100098,
+    "localization_error_px": 8.012843219614899
+  },
+  {
+    "image": "afw/4400753623_1.jpg",
+    "nme": 0.060113951563835144,
+    "localization_error_px": 6.954042413130209
+  },
+  {
+    "image": "afw/447910249_1.jpg",
+    "nme": 0.08975125104188919,
+    "localization_error_px": 12.310506348176315
+  },
+  {
+    "image": "afw/4492032921_1.jpg",
+    "nme": 0.06991448253393173,
+    "localization_error_px": 9.249109278115156
+  },
+  {
+    "image": "afw/4856974482_2.jpg",
+    "nme": 0.07668986916542053,
+    "localization_error_px": 12.705266463248627
+  },
+  {
+    "image": "afw/4856974482_8.jpg",
+    "nme": 0.07163363695144653,
+    "localization_error_px": 10.190524520093021
+  },
+  {
+    "image": "afw/507521047_1.jpg",
+    "nme": 0.1294865757226944,
+    "localization_error_px": 14.265957807057276
+  },
+  {
+    "image": "afw/5083671561_2.jpg",
+    "nme": 0.08469007909297943,
+    "localization_error_px": 11.27753078402493
+  },
+  {
+    "image": "afw/5083671561_3.jpg",
+    "nme": 0.08880024403333664,
+    "localization_error_px": 10.124881989186834
+  },
+  {
+    "image": "afw/5083671561_4.jpg",
+    "nme": 0.11319808661937714,
+    "localization_error_px": 15.268797771053858
+  },
+  {
+    "image": "afw/5083671561_5.jpg",
+    "nme": 0.12382759898900986,
+    "localization_error_px": 12.868044222968583
+  },
+  {
+    "image": "afw/5083671561_6.jpg",
+    "nme": 0.1060820147395134,
+    "localization_error_px": 10.712999816403826
+  },
+  {
+    "image": "afw/5106695994_1.jpg",
+    "nme": 0.058635786175727844,
+    "localization_error_px": 6.881446212389619
+  },
+  {
+    "image": "afw/5106695994_2.jpg",
+    "nme": 0.056394703686237335,
+    "localization_error_px": 6.980439569788095
+  },
+  {
+    "image": "afw/5106695994_3.jpg",
+    "nme": 0.08698596805334091,
+    "localization_error_px": 9.509773029463867
+  },
+  {
+    "image": "afw/5106695994_4.jpg",
+    "nme": 0.057291414588689804,
+    "localization_error_px": 6.421255729660288
+  },
+  {
+    "image": "afw/5106695994_5.jpg",
+    "nme": 0.08098441362380981,
+    "localization_error_px": 8.972154444020997
+  },
+  {
+    "image": "afw/5106695994_6.jpg",
+    "nme": 0.07255478948354721,
+    "localization_error_px": 8.627702376972794
+  },
+  {
+    "image": "afw/5144909700_1.jpg",
+    "nme": 0.07887681573629379,
+    "localization_error_px": 10.175862958559518
+  },
+  {
+    "image": "afw/5144909700_2.jpg",
+    "nme": 0.08058182895183563,
+    "localization_error_px": 9.616004187218897
+  },
+  {
+    "image": "afw/5144909700_3.jpg",
+    "nme": 0.07929306477308273,
+    "localization_error_px": 10.43337089093253
+  },
+  {
+    "image": "afw/5188566452_1.jpg",
+    "nme": 0.05618803948163986,
+    "localization_error_px": 9.269839842445963
+  },
+  {
+    "image": "afw/59354095_1.jpg",
+    "nme": 0.04649119824171066,
+    "localization_error_px": 5.291752652928135
+  },
+  {
+    "image": "afw/59354095_2.jpg",
+    "nme": 0.05422054976224899,
+    "localization_error_px": 6.761377437766359
+  },
+  {
+    "image": "afw/59354095_3.jpg",
+    "nme": 0.09081177413463593,
+    "localization_error_px": 11.797012164245826
+  },
+  {
+    "image": "afw/88094323_1.jpg",
+    "nme": 0.19325339794158936,
+    "localization_error_px": 21.42287154624355
+  },
+  {
+    "image": "afw/955659370_1.jpg",
+    "nme": 0.06278079748153687,
+    "localization_error_px": 12.132879688160683
+  },
+  {
+    "image": "afw/955659370_2.jpg",
+    "nme": 0.13319158554077148,
+    "localization_error_px": 20.95431278370448
+  }
+]

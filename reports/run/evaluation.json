@@ -1,0 +1,189 @@
+{
+  "status": "evaluated",
+  "selected_architecture": "coordinates",
+  "selected_checkpoint": "training\\experiments\\wflw-coordinates\\best.pt",
+  "parameters": 654772,
+  "dataset": {
+    "dataset": "wflw",
+    "root": "C:\\Users\\User\\Documents\\ChatGPT\\facelab\\training\\datasets\\WFLW",
+    "counts": {
+      "train": 4951,
+      "val": 868,
+      "test": 2500
+    },
+    "sources": {
+      "wflw": 8319
+    },
+    "seed": 42,
+    "manifest_sha256": "1a6361e710a25828d15402b0bf26a9151645e18425bbd1380abeb5696efb49e8",
+    "coordinate_origin": "zero-based",
+    "protocol": "official",
+    "unique_images": 6551,
+    "excluded_development_faces_sharing_test_image": 1681,
+    "original_counts_before_decontamination": {
+      "train": 6326,
+      "val": 1174,
+      "test": 2500
+    },
+    "faces_with_out_of_frame_labels": 117,
+    "split_unit": "SHA-256 of decoded source image; all faces in the same image stay together",
+    "split_policy": "Official test preserved; development faces sharing a decoded image with test excluded; 15% of remaining development image hashes reserved for validation. Modified training protocol, not directly comparable to published benchmarks.",
+    "limitations": "Identity metadata unavailable: identity-independent splitting cannot be guaranteed. GT-derived crops approximate user-selected ROI."
+  },
+  "test": {
+    "samples": 2500,
+    "nme": 0.10098446905612946,
+    "median_nme": 0.07819300144910812,
+    "p90_nme": 0.17890514433383942,
+    "mean_localization_error_px": 5.113874639524879,
+    "failure_threshold": 0.1,
+    "failure_rate": 0.3232
+  },
+  "baselines": {
+    "mean_training_shape": {
+      "samples": 2500,
+      "nme": 0.39008163205634616,
+      "median_nme": 0.2935231129106683,
+      "p90_nme": 0.8213915013302401,
+      "mean_localization_error_px": 18.637798860783686,
+      "failure_threshold": 0.1,
+      "failure_rate": 0.956
+    },
+    "shuffled_image_prediction_nme": 0.517891526222229,
+    "note": "Mean shape uses training annotations only. Shuffled predictions are a diagnostic of image dependence, not another trained model."
+  },
+  "geometry_error_against_annotation": {
+    "eye_tilt_0": {
+      "mean_absolute_error": 4.128939312,
+      "p90_absolute_error": 8.581725,
+      "samples": 2500
+    },
+    "eye_aspect_0": {
+      "mean_absolute_error": 6.371290244391026,
+      "p90_absolute_error": 2.7384850000000003,
+      "samples": 2496
+    },
+    "brow_gap_0": {
+      "mean_absolute_error": 0.018506808,
+      "p90_absolute_error": 0.03859300000000001,
+      "samples": 2500
+    },
+    "brow_angle_0": {
+      "mean_absolute_error": 6.0136566359999994,
+      "p90_absolute_error": 12.891624999999998,
+      "samples": 2500
+    },
+    "brow_arch_0": {
+      "mean_absolute_error": 0.04819957148578294,
+      "p90_absolute_error": 0.097272,
+      "samples": 2497
+    },
+    "eye_tilt_1": {
+      "mean_absolute_error": 4.075181239999999,
+      "p90_absolute_error": 8.356459999999997,
+      "samples": 2500
+    },
+    "eye_aspect_1": {
+      "mean_absolute_error": 5.716719939879759,
+      "p90_absolute_error": 2.7644499999999987,
+      "samples": 2495
+    },
+    "brow_gap_1": {
+      "mean_absolute_error": 0.018596280000000003,
+      "p90_absolute_error": 0.04045,
+      "samples": 2500
+    },
+    "brow_angle_1": {
+      "mean_absolute_error": 5.737921464,
+      "p90_absolute_error": 11.996369999999997,
+      "samples": 2500
+    },
+    "brow_arch_1": {
+      "mean_absolute_error": 0.049125162454873646,
+      "p90_absolute_error": 0.100994,
+      "samples": 2493
+    },
+    "intereye": {
+      "mean_absolute_error": 0.02551228,
+      "p90_absolute_error": 0.05296199999999997,
+      "samples": 2500
+    },
+    "eye_tilt_difference": {
+      "mean_absolute_error": 3.883289004,
+      "p90_absolute_error": 8.620318,
+      "samples": 2500
+    },
+    "eye_aspect_difference": {
+      "mean_absolute_error": 6.8895313890004015,
+      "p90_absolute_error": 1.68008,
+      "samples": 2491
+    },
+    "jaw_width": {
+      "mean_absolute_error": 0.03684844400000001,
+      "p90_absolute_error": 0.07585100000000009,
+      "samples": 2500
+    },
+    "lower_middle": {
+      "mean_absolute_error": 0.17541853599999999,
+      "p90_absolute_error": 0.3569579999999997,
+      "samples": 2500
+    },
+    "width_height": {
+      "mean_absolute_error": 0.063060044,
+      "p90_absolute_error": 0.13432100000000008,
+      "samples": 2500
+    },
+    "asymmetry": {
+      "mean_absolute_error": 0.025192392,
+      "p90_absolute_error": 0.052504000000000016,
+      "samples": 2500
+    },
+    "eye_spacing": {
+      "mean_absolute_error": 0.25764412400000003,
+      "p90_absolute_error": 0.5338189999999999,
+      "samples": 2500
+    },
+    "mouth_nose": {
+      "mean_absolute_error": 0.29526504400000003,
+      "p90_absolute_error": 0.606551,
+      "samples": 2500
+    },
+    "midface_pupils": {
+      "mean_absolute_error": 0.092686488,
+      "p90_absolute_error": 0.20339999999999986,
+      "samples": 2500
+    }
+  },
+  "normalization": "WFLW: pupil 96\u201397; 300-W: outer corners 36\u201345. NME is a fraction, not percent.",
+  "selection": "Minimum validation NME only. Test not used for checkpoint or architecture selection.",
+  "comparison": [
+    {
+      "architecture": "coordinates",
+      "validation": {
+        "samples": 868,
+        "nme": 0.07537060976028442,
+        "median_nme": 0.06418059766292572,
+        "p90_nme": 0.11481396108865738,
+        "mean_localization_error_px": 4.612591500194873,
+        "failure_threshold": 0.1,
+        "failure_rate": 0.15898617511520738
+      },
+      "parameters": 654772,
+      "checkpoint": "training\\experiments\\wflw-coordinates\\best.pt"
+    },
+    {
+      "architecture": "heatmaps",
+      "validation": {
+        "samples": 868,
+        "nme": 0.0815201848745346,
+        "median_nme": 0.06776079535484314,
+        "p90_nme": 0.12413880228996277,
+        "mean_localization_error_px": 4.9944904218462245,
+        "failure_threshold": 0.1,
+        "failure_rate": 0.18548387096774194
+      },
+      "parameters": 135698,
+      "checkpoint": "training\\experiments\\wflw-heatmaps\\best.pt"
+    }
+  ]
+}
