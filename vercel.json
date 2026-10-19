@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "fastapi",
+  "fluid": true,
+  "buildCommand": "npx --yes pnpm@11.25.0 --dir frontend install --frozen-lockfile && npx --yes pnpm@11.25.0 --dir frontend run build && python -m scripts.serve --check",
+  "functions": {
+    "backend/app/main.py": {
+      "maxDuration": 120,
+      "includeFiles": "{training/checkpoints/selected.pt,training/checkpoints/regions-selected.pt,frontend/dist/**,reports/run/evaluation.json,reports/reference-values/examples.json,reports/reference-values/example-*.jpg}",
+      "excludeFiles": "{backend/tests/**,training/datasets/**,training/experiments/**,reports/qa/**,reports/afw/**,frontend/src/**,frontend/node_modules/**,.test-tmp*/**,.venv/**,**/__pycache__/**}"
+    }
+  }
+}

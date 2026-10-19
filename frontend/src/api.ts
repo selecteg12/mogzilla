@@ -31,8 +31,14 @@ export async function normalizePhoto(file: File): Promise<{ file: File; width: n
     const context = canvas.getContext('2d')!
     context.fillStyle = '#ffffff'; context.fillRect(0, 0, canvas.width, canvas.height)
     context.drawImage(bitmap, 0, 0)
-    const blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('Не удалось преобразовать изображение.')), 'image/jpeg', 0.95))
-    if (blob.size > 10 * 1024 ** 2) throw new Error('После декодирования фото слишком большое. Уменьшите его размер.')
+    // Keep source dimensions so photo, landmarks and measurements use one set
+    // of coordinates. Larger uploads are recompressed to fit the hosting limit.
+    let blob: Blob | null = null
+    for (const quality of [0.95, 0.9, 0.82, 0.72, 0.6, 0.48]) {
+      blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob(b => b ? resolve(b) : reject(new Error('Не удалось преобразовать изображение.')), 'image/jpeg', quality))
+      if (blob.size <= 4 * 1024 ** 2) break
+    }
+    if (!blob || blob.size > 4 * 1024 ** 2) throw new Error('Уменьшите разрешение фотографии и попробуйте ещё раз.')
     return { file: new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' }), width: bitmap.width, height: bitmap.height }
   } finally { bitmap.close() }
 }
