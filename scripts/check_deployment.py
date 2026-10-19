@@ -29,7 +29,7 @@ def verify(base_url, wait_seconds=0):
         try:
             health = json.loads(read("/api/health"))
             break
-        except (URLError, TimeoutError) as exc:
+        except (URLError, TimeoutError, ConnectionError) as exc:
             if isinstance(exc, HTTPError) and exc.code in {401, 403}:
                 raise
             if time.monotonic() >= deadline:
@@ -67,7 +67,7 @@ def main():
     args = parser.parse_args()
     try:
         print(json.dumps(verify(args.url, args.wait_seconds), ensure_ascii=False, indent=2))
-    except (URLError, TimeoutError, ValueError, RuntimeError, KeyError) as exc:
+    except (URLError, TimeoutError, ConnectionError, ValueError, RuntimeError, KeyError) as exc:
         parser.exit(1, f"Release verification failed: {exc}\n")
 
 
