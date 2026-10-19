@@ -26,3 +26,6 @@ reports/qa/
 *.log
 reports/reference-values/candidates.json
 reports/reference-values/candidate-*.jpg
+
+.vercel
+.env*
