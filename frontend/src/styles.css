@@ -411,7 +411,12 @@ footer > span { font-size: 9px; color: #685673; }
 .camera-dialog::backdrop { background: #06030ade; backdrop-filter: blur(10px); }
 .camera-dialog h2 { font-size: 25px; }
 .camera-dialog > p { font-size: 12px; }
-.camera-dialog video { width: 100%; min-height: 200px; border-radius: 8px; background: #0d0c12; margin: 10px 0 18px; }
+.camera-preview { position: relative; margin: 10px 0; border-radius: 8px; overflow: hidden; background: #0d0c12; }
+.camera-preview video { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; }
+.camera-preview canvas { display: block; width: 100%; min-height: 160px; max-height: 45vh; max-height: 45dvh; object-fit: contain; transform: none; rotate: none; scale: none; }
+.camera-dialog .camera-status { color: #c6b2db; margin: 10px 0 16px; }
+.camera-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.camera-actions .button { flex: 1 1 180px; min-height: 44px; justify-content: center; }
 .camera-dialog small { display: block; margin-top: 16px; color: #92789d; font-size: 10px; }
 .modal-loading { position: fixed; inset: 0; z-index: 5; background: #0c0911ed; display: grid; place-items: center; color: #c8a7e1; }
 .spin { animation: spin 1.2s linear infinite; }
