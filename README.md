@@ -64,8 +64,8 @@ The evaluation is limited: some held-out results were inspected in earlier exper
 Requirements: **Python 3.12**, **Node.js 22.12+** and **pnpm**. The scripts can also discover the bundled Codex runtimes on Windows.
 
 ```powershell
-git clone https://github.com/selecteg12/facemetrics-ai.git
-cd facemetrics-ai
+git clone https://github.com/selecteg12/mogzilla.git
+cd mogzilla
 git switch codex/holistic-rating
 .\setup.ps1
 .\start-mogzilla.ps1

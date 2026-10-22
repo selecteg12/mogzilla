@@ -5,7 +5,7 @@
   "parameters": 134708,
   "dataset": {
     "dataset": "300w",
-    "root": "C:\\Users\\User\\Documents\\ChatGPT\\facelab\\training\\datasets\\300w",
+    "root": "training/datasets/300w",
     "counts": {
       "train": 231,
       "val": 49,
