@@ -13,13 +13,16 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     MKL_NUM_THREADS=2 \
     PORT=8000
 WORKDIR /app
+RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 libportaudio2 && rm -rf /var/lib/apt/lists/*
 COPY requirements-runtime.txt ./
 RUN pip install --no-cache-dir torch==2.14.1+cpu --index-url https://download.pytorch.org/whl/cpu \
     && pip install --no-cache-dir -r requirements-runtime.txt
 COPY backend/ ./backend/
-COPY scripts/serve.py ./scripts/serve.py
+COPY scripts/serve.py scripts/download_holistic_models.py ./scripts/
+RUN python -m scripts.download_holistic_models
 COPY training/checkpoints/selected.pt training/checkpoints/regions-selected.pt ./training/checkpoints/
 COPY reports/run/evaluation.json ./reports/run/evaluation.json
+COPY reports/holistic/evaluation.json ./reports/holistic/evaluation.json
 COPY reports/reference-values/examples.json reports/reference-values/example-1.jpg reports/reference-values/example-2.jpg reports/reference-values/example-3.jpg ./reports/reference-values/
 COPY --from=frontend /build/frontend/dist/ ./frontend/dist/
 RUN useradd --create-home --uid 10001 appuser

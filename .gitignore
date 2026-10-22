@@ -29,3 +29,21 @@ reports/reference-values/candidate-*.jpg
 
 .vercel
 .env*
+
+# Public scoring artifacts; large upstream weights remain setup downloads.
+!training/checkpoints/holistic/
+training/checkpoints/holistic/*
+!training/checkpoints/holistic/personal-preference.json
+!training/checkpoints/holistic/personal-preference.npz
+!training/checkpoints/holistic/personal-visual.pt
+
+# Explicitly selected Pinterest collection for the public research release.
+!data/pinterest-portraits.zip
+
+# Local handoff material and detailed experiment working notes.
+NEXT_PROJECT_PROMPT.md
+project-context/
+reports/PERSONAL*.md
+reports/PAIRWISE_EXPERIMENT*.md
+reports/MOGZILLA_*.md
+reports/personal/

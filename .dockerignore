@@ -19,6 +19,7 @@ backend/**/__pycache__/
 !scripts/
 !scripts/__init__.py
 !scripts/serve.py
+!scripts/download_holistic_models.py
 !training/
 !training/checkpoints/
 !training/checkpoints/selected.pt
@@ -26,6 +27,8 @@ backend/**/__pycache__/
 !reports/
 !reports/run/
 !reports/run/evaluation.json
+!reports/holistic/
+!reports/holistic/evaluation.json
 !reports/reference-values/
 !reports/reference-values/examples.json
 !reports/reference-values/example-1.jpg

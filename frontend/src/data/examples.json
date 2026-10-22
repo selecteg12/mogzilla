@@ -1,0 +1,54 @@
+{
+  "modelId": "facelab/personal-upper-2026-10-21",
+  "revision": "33c59a04cba4",
+  "examples": [
+    {
+      "id": "example-01",
+      "group": "highest",
+      "image": "example-01.jpg",
+      "score": 10.0,
+      "width": 215,
+      "height": 252
+    },
+    {
+      "id": "example-02",
+      "group": "highest",
+      "image": "example-02.jpg",
+      "score": 10.0,
+      "width": 199,
+      "height": 229
+    },
+    {
+      "id": "example-03",
+      "group": "highest",
+      "image": "example-03.png",
+      "score": 10.0,
+      "width": 576,
+      "height": 734
+    },
+    {
+      "id": "example-04",
+      "group": "lowest",
+      "image": "example-04.jpg",
+      "score": 1.28,
+      "width": 257,
+      "height": 304
+    },
+    {
+      "id": "example-05",
+      "group": "lowest",
+      "image": "example-05.jpg",
+      "score": 1.69,
+      "width": 452,
+      "height": 678
+    },
+    {
+      "id": "example-06",
+      "group": "lowest",
+      "image": "example-06.jpg",
+      "score": 1.9,
+      "width": 1024,
+      "height": 682
+    }
+  ]
+}

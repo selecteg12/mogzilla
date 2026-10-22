@@ -9,10 +9,12 @@ if (-not (Test-Path -LiteralPath '.venv\Scripts\python.exe')) {
     & $Python -m venv --without-pip .venv
     if ($LASTEXITCODE -ne 0) { throw 'Не удалось создать Python-окружение.' }
 }
-& $Python -m pip --python .venv install torch --index-url https://download.pytorch.org/whl/cpu
+& $Python -m pip --python .venv install torch==2.14.1+cpu --index-url https://download.pytorch.org/whl/cpu
 if ($LASTEXITCODE -ne 0) { throw 'Не удалось установить CPU PyTorch.' }
-& $Python -m pip --python .venv install -r requirements.txt
+& $Python -m pip --python .venv install -r requirements-lock.txt
 if ($LASTEXITCODE -ne 0) { throw 'Не удалось установить Python-зависимости.' }
+& '.\.venv\Scripts\python.exe' -X utf8 -m scripts.download_holistic_models
+if ($LASTEXITCODE -ne 0) { throw 'Не удалось загрузить и проверить исследовательские модели.' }
 $bundledNode = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin'
 $bundledPnpm = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\fallback\pnpm.cmd'
 if (Test-Path -LiteralPath $bundledNode) { $env:PATH = $bundledNode + ';' + $env:PATH }
@@ -24,4 +26,4 @@ try {
     & $projectPnpm run build
     if ($LASTEXITCODE -ne 0) { throw 'Ошибка сборки интерфейса.' }
 } finally { Pop-Location }
-Write-Host 'Готово. Для запуска: .\start.ps1' -ForegroundColor Green
+Write-Host 'Готово. Для запуска экспериментальной версии: .\start.ps1 -Port 8001' -ForegroundColor Green

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FaceLab — фотографии и мои оценки</title>
+  <link rel="stylesheet" href="./reviewer/style.css">
+</head>
+<body><main>
+  <header>
+    <div><h1>Фотографии и мои оценки</h1><p id="intro">Загрузка подборки…</p></div>
+    <div class="actions"><button id="export-zip" class="primary" disabled>Скачать ZIP: фото и оценки</button><button id="export-csv" disabled>Скачать оценки CSV</button></div>
+  </header>
+  <section id="dropzone" class="uploader" aria-label="Добавление фотографий">
+    <div class="actions">
+      <button id="add-photos" disabled>＋ Добавить фотографии</button>
+      <button id="add-folder" disabled>Выбрать папку</button>
+      <button id="restore-zip" disabled>Восстановить из ZIP</button>
+    </div>
+    <p>Можно перетащить сюда сразу несколько фото. JPG, PNG, WebP, AVIF · до 20 МБ на фото.</p>
+    <input id="photos-input" type="file" accept="image/jpeg,image/png,image/webp,image/avif,.jpg,.jpeg,.png,.webp,.avif" multiple hidden>
+    <input id="folder-input" type="file" accept="image/*" multiple webkitdirectory hidden>
+    <input id="zip-input" type="file" accept=".zip,application/zip" hidden>
+  </section>
+  <div class="toolbar">
+    <button id="previous" disabled>← Назад</button><button id="next" disabled>Вперёд →</button>
+    <button id="undo" disabled>Отменить оценку</button><button id="jump" disabled>К неоценённым</button>
+    <label class="filter-label">Показать <select id="filter" disabled><option value="all">Все новые фото</option><option value="pending">Без оценки</option><option value="rated">Оценённые</option><option value="excluded">Исключённые</option></select></label>
+    <button id="references" disabled>Мои исходные примеры</button>
+  </div>
+  <p id="progress" aria-live="polite"></p>
+  <p id="storage" class="small">Фото и оценки сохраняются в этом браузере. ZIP — переносимая копия, которую можно передать для обучения.</p>
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+  <details id="errors" class="hidden"><summary>Некоторые файлы не добавлены</summary><ul id="error-list"></ul></details>
+  <div class="layout hidden" id="review">
+    <figure class="photo"><img id="portrait" alt="Портрет для вашей оценки"><figcaption id="filename"></figcaption></figure>
+    <aside>
+      <div class="box"><div class="label" id="position"></div><div class="score" id="score"></div>
+        <p id="review-note" class="notice hidden"></p><p id="suggestion" class="small"></p>
+        <div class="keys" id="keys"></div><button id="accept" class="hidden">Подтвердить предложенный балл</button>
+      </div>
+      <div class="box compact"><div class="actions"><button id="skip">Пропустить · Пробел</button><button id="exclude">Исключить · X</button><button id="clear">Снять оценку</button></div>
+        <p class="small">1–9 — оценка; 0 — 10. Стрелки — просмотр. Backspace — отменить действие.</p>
+        <a id="source" target="_blank" rel="noopener noreferrer" class="hidden">Страница источника ↗</a>
+      </div>
+    </aside>
+  </div>
+  <div id="empty" class="empty hidden"><h2>Здесь пока нет фотографий</h2><p id="empty-text">Добавьте фотографии пачкой и начните с первого снимка.</p></div>
+  <section id="references-grid" class="reference hidden" aria-label="Исходные примеры"></section>
+  <p class="small footer">ZIP содержит фотографии по папкам с баллами, таблицу ratings.csv и manifest.json. Снимки без оценки и исключённые сохраняются отдельно и не считаются разметкой для обучения. Экспорт не запускает обучение.</p>
+</main><script type="module" src="./reviewer/app.mjs"></script></body>
+</html>

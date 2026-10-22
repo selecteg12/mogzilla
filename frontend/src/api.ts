@@ -1,7 +1,7 @@
 import type { Analysis, Box, Localization } from './types'
 
 export function localizePhoto(file: File, signal: AbortSignal) {
-  return fetchJson<{ localization: Localization; analysis: Analysis | null }>('/api/localize', {
+  return fetchJson<{ localization: Localization; analysis: Analysis | null }>('/api/holistic/analyze', {
     method: 'POST', headers: { 'Content-Type': file.type }, body: file, signal,
   })
 }
@@ -15,7 +15,12 @@ export async function fetchJson<T>(path: string, options?: RequestInit): Promise
 
 export function processPhoto(file: File, box: Box, analyze: boolean, signal: AbortSignal) {
   const query = new URLSearchParams(Object.entries(box).map(([key, value]) => [key, String(value)]))
-  return fetchJson<Analysis>(`/api/${analyze ? 'analyze' : 'prepare'}?${query}`, {
+  if (analyze) {
+    return fetchJson<{ analysis: Analysis | null; localization: Localization }>(`/api/holistic/analyze?${query}`, {
+      method: 'POST', headers: { 'Content-Type': file.type }, body: file, signal,
+    }).then(result => { if (!result.analysis) throw new Error(result.localization.message ?? 'Не удалось найти лицо.'); return result.analysis })
+  }
+  return fetchJson<Analysis>(`/api/prepare?${query}`, {
     method: 'POST', headers: { 'Content-Type': file.type }, body: file, signal,
   })
 }

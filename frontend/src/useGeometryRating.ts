@@ -9,7 +9,7 @@ export function useGeometryRating(analysis: Analysis | null) {
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   useEffect(() => {
-    if (!analysis?.landmarks || !analysis.model || analysis.rating) return
+    if (!analysis?.landmarks || !analysis.model || analysis.rating || analysis.holistic) return
     const request = new AbortController()
     setBusy(true); setError('')
     void (async () => {

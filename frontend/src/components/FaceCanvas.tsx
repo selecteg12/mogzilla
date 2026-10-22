@@ -3,12 +3,13 @@ import type { PointerEvent } from 'react'
 import type { Analysis, Box, Metric, RatingPart } from '../types'
 
 export type Layers = { landmarks: boolean; contours: boolean; measurements: boolean; symmetry: boolean; original: boolean }
+const SUMMARY_POINTS = new Set([10, 33, 133, 263, 362, 234, 454, 172, 397, 152, 168, 0, 1, 2, 17])
 
-export default function FaceCanvas({ url, width, height, box, onBox, result, layers, comparison, selected, disabled, zoom, mode, ratingParts, activePart, allCriteria, onCriterion, regionLabel }: {
+export default function FaceCanvas({ url, width, height, box, onBox, result, layers, comparison, selected, disabled, zoom, mode, ratingParts, activePart, allCriteria, onCriterion, regionLabel, focused = false }: {
   url: string; width: number; height: number; box: Box | null; onBox: (box: Box) => void;
   result: Analysis | null; layers: Layers; comparison: number; selected: Metric | null; disabled: boolean; zoom: boolean;
   mode: 'photo' | 'points' | 'deviations'; ratingParts: RatingPart[]; activePart: RatingPart | null; allCriteria: boolean; onCriterion: (id: string) => void;
-  regionLabel?: string;
+  regionLabel?: string; focused?: boolean;
 }) {
   const svg = useRef<SVGSVGElement>(null)
   const [draft, setDraft] = useState<Box | null>(null)
@@ -57,17 +58,23 @@ export default function FaceCanvas({ url, width, height, box, onBox, result, lay
         <rect x={region.x} y={region.y} width={region.width} height={region.height} rx={4 * unit} fill="none" stroke="#afa2ff" strokeWidth={2 * unit} strokeDasharray={`${8 * unit} ${4 * unit}`} />
       </>}
       {landmarks && mode !== 'photo' && <g clipPath={`url(#${clipId})`}>
-        <rect width={width} height={height} fill="#0b0e19" fillOpacity={layers.original ? 0.18 : 1} />
+        {!focused && <rect width={width} height={height} fill="#0b0e19" fillOpacity={layers.original ? 0.18 : 1} />}
         {layers.contours && result.geometry?.paths.map((path, index) => <polyline key={index} points={path.map(id => `${landmarks[id].x},${landmarks[id].y}`).join(' ')} fill="none" stroke="#ae9dff" strokeWidth={unit} opacity=".7" />)}
         {layers.symmetry && result.geometry && <line
           x1={result.geometry.axis.origin[0] - result.geometry.axis.direction[0] * height * 2} y1={result.geometry.axis.origin[1] - result.geometry.axis.direction[1] * height * 2}
           x2={result.geometry.axis.origin[0] + result.geometry.axis.direction[0] * height * 2} y2={result.geometry.axis.origin[1] + result.geometry.axis.direction[1] * height * 2}
-          stroke="#71e0cc" strokeWidth={1.5 * unit} strokeDasharray={`${6 * unit} ${5 * unit}`} />}
-        {mode === 'deviations' && layers.measurements && !activePart && segments.map(([a, b], index) => <line key={index} x1={landmarks[a].x} y1={landmarks[a].y} x2={landmarks[b].x} y2={landmarks[b].y} stroke="#f1cd82" strokeWidth={2 * unit} />)}
+          stroke={focused ? 'var(--photo-accent, #ff7044)' : '#71e0cc'} strokeWidth={1.5 * unit} strokeDasharray={`${6 * unit} ${5 * unit}`} />}
+        {mode === 'deviations' && layers.measurements && !activePart && segments.map(([a, b], index) => <line key={index} x1={landmarks[a].x} y1={landmarks[a].y} x2={landmarks[b].x} y2={landmarks[b].y} stroke={focused ? 'var(--photo-accent, #ff7044)' : '#f1cd82'} strokeWidth={2 * unit} />)}
         {mode === 'deviations' && layers.measurements && visibleParts.map(part => <g key={part.id} data-criterion={part.id} opacity={activePart && activePart.id !== part.id ? .24 : 1}>
           {part.annotations.map((line, index) => <line key={index} x1={line.a[0]} y1={line.a[1]} x2={line.b[0]} y2={line.b[1]} stroke={part.deviation.direction === 'within' ? '#87e0bb' : '#ffd18a'} strokeWidth={(line.kind === 'reference' ? 1.3 : 2.5) * unit} strokeDasharray={line.kind === 'reference' ? `${5 * unit} ${4 * unit}` : undefined}><title>{part.title}: {line.label}. {part.summary}</title></line>)}
         </g>)}
-        {layers.landmarks && landmarks.map(p => <circle key={p.id} cx={p.x} cy={p.y} r={(mode === 'deviations' && (activePart?.point_ids.includes(p.id) || selected?.point_ids.includes(p.id)) ? 3.5 : 2) * unit} fill={mode === 'deviations' && (activePart?.point_ids.includes(p.id) || selected?.point_ids.includes(p.id)) ? '#ffe2a4' : '#c8bcff'} stroke="#17121e" strokeWidth={.5 * unit}><title>Ориентир {p.id}: ({p.x.toFixed(2)}, {p.y.toFixed(2)}){selected?.point_ids.includes(p.id) ? ` · ${selected.title}` : ''}</title></circle>)}
+        {layers.landmarks && landmarks.map(p => {
+          if (focused && !selected?.point_ids.includes(p.id)) return null
+          if (focused && selected && selected.point_ids.length > 40 && !SUMMARY_POINTS.has(p.id)) return null
+          const emphasized = mode === 'deviations' && (activePart?.point_ids.includes(p.id) || selected?.point_ids.includes(p.id))
+          const dense = landmarks.length > 100
+          return <circle key={p.id} cx={p.x} cy={p.y} r={(emphasized ? dense ? 2.6 : 3.5 : dense ? 1.2 : 2) * unit} opacity={dense && !emphasized ? .3 : 1} fill={focused ? 'var(--photo-accent, #ff7044)' : emphasized ? '#ffe2a4' : '#c8bcff'} stroke={focused ? '#fff' : '#17121e'} strokeWidth={.5 * unit}><title>Ориентир {p.id}: ({p.x.toFixed(2)}, {p.y.toFixed(2)}){selected?.point_ids.includes(p.id) ? ` · ${selected.title}` : ''}</title></circle>
+        })}
         {mode === 'deviations' && layers.measurements && visibleParts.map(part => {
           const label = labels[part.id]
           if (!label || !part.annotations.length) return null
@@ -85,10 +92,10 @@ export default function FaceCanvas({ url, width, height, box, onBox, result, lay
           </g>
         })}
       </g>}
-      {landmarks && mode !== 'photo' && box && <rect x={box.x} y={box.y} width={box.width} height={box.height} fill="none" stroke="#8ed8c4" strokeOpacity=".7" strokeDasharray={`${5 * unit} ${5 * unit}`} strokeWidth={unit} pointerEvents="none" />}
+      {landmarks && !focused && mode !== 'photo' && box && <rect x={box.x} y={box.y} width={box.width} height={box.height} fill="none" stroke="#8ed8c4" strokeOpacity=".7" strokeDasharray={`${5 * unit} ${5 * unit}`} strokeWidth={unit} pointerEvents="none" />}
       {landmarks && comparison > 0 && <line x1={divider} y1={view.y} x2={divider} y2={view.y + view.height} stroke="#ffffff" strokeOpacity=".8" strokeWidth={unit} />}
     </svg>
-    <div className="photo-label">{landmarks ? mode === 'photo' ? 'Исходный снимок' : mode === 'points' ? `${landmarks.length} точек · реальный выход CNN` : 'Измеренные отрезки → баллы' : region ? regionLabel ?? 'Выделенная область лица' : 'Выделите лицо прямоугольником'}</div>
+    <div className="photo-label">{landmarks ? mode === 'photo' ? 'Исходный снимок' : mode === 'points' ? `${landmarks.length} точек · выход модели` : result?.holistic ? 'Ориентиры и измерения' : 'Измеренные отрезки → баллы' : region ? regionLabel ?? 'Выделенная область лица' : 'Выделите лицо прямоугольником'}</div>
     {landmarks && <div className="compare-label">{zoom ? 'Лицо крупно' : 'Весь снимок'}</div>}
   </div>
 }

@@ -1,5 +1,5 @@
 {
-  "name": "facemetrics-ai-frontend",
+  "name": "mogzilla-frontend",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -7,6 +7,8 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
     "test:camera": "node --test tests/camera-preview.test.cjs",
+    "test:rating": "node --test tests/rating-tier.test.mjs",
+    "test:regions": "node --test tests/region-geometry.test.mjs",
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": {

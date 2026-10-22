@@ -1,7 +1,9 @@
 # Install CPU torch separately if desired: pip install torch --index-url https://download.pytorch.org/whl/cpu
 torch>=2.6,<3
+torchvision==0.29.1
+mediapipe==0.10.35
 numpy>=2,<3
-opencv-python-headless>=4.10,<6
+opencv-contrib-python==5.0.0.93
 Pillow>=11,<14
 fastapi>=0.115,<1
 pydantic>=2.9,<3

@@ -1,0 +1,1103 @@
+{
+  "protocol": "deterministic SHA-256 order; first eligible WFLW test faces >=110px; GT-selected portrait with padding; fresh detector inside portrait",
+  "elapsed_seconds": 16.83,
+  "accepted_inference_median_ms": 328.38,
+  "samples": 32,
+  "calculated": 20,
+  "abstained": 12,
+  "model": {
+    "ready": true,
+    "reason": null,
+    "model_id": "evanlyhf/scut-fbp5500-beauty",
+    "revision": "44c77683f3640a259aacff59a2d635875ec65729",
+    "landmarks": 478,
+    "device": "cpu",
+    "source_scale": [
+      1,
+      5
+    ],
+    "display_scale": [
+      0,
+      10
+    ],
+    "display_formula": "(raw − 1) × 2.5",
+    "research_only": true,
+    "external_ai": false,
+    "photo_storage": false
+  },
+  "human_rating_agreement": null,
+  "distinct_photos_per_identity": null,
+  "geometry_mae_on_accepted": {
+    "eye_tilt_0": 2.2966,
+    "eye_tilt_1": 2.2197,
+    "eye_spacing": 0.1454,
+    "mouth_nose": 0.2293
+  },
+  "legacy_geometry_mae_on_same_accepted": {
+    "eye_tilt_0": 2.9882,
+    "eye_tilt_1": 1.9984,
+    "eye_spacing": 0.1986,
+    "mouth_nose": 0.2511
+  },
+  "geometry_caveat": "Native contour definitions differ; this small selected audit is not a WFLW benchmark or a guarantee of individual accuracy.",
+  "synthetic_perturbations": {
+    "comparisons": 15,
+    "mean_absolute_display_delta": 0.299,
+    "max_absolute_display_delta": 0.96
+  },
+  "limitations": [
+    "No attractiveness labels; no claim of agreement with people.",
+    "No identity-labelled multi-photo set; synthetic transformations are not different photographs.",
+    "Possible source overlap with SCUT is not established.",
+    "Abstained faces excluded from geometry errors; compare coverage too."
+  ],
+  "rows": [
+    {
+      "sample": "sample-01.jpg",
+      "source_image": "WFLW_images/2--Demonstration/2_Demonstration_Demonstrators_2_537.jpg",
+      "source_sha256": "deab4632503be3b5476287037f8473febb07755e275c9570fe421de51cc35ed1",
+      "input_sha256": "825d88621b175caafeccac3527bc40e8e42b492de2ab46ff524fc3b4861a7a2a",
+      "status": "abstained",
+      "reason": "Один или оба глаза закрыты либо сильно прищурены. Загрузите снимок с открытыми глазами.",
+      "milliseconds": 21.83
+    },
+    {
+      "sample": "sample-02.jpg",
+      "source_image": "WFLW_images/4--Dancing/4_Dancing_Dancing_4_744.jpg",
+      "source_sha256": "2cccabb778376546d0d98617d9b2b2577a46393aa01d3ddcfa91e5b9fb30aa20",
+      "input_sha256": "76e5b034f224dacc756a700f643d68775c7fd26aa5f0f99efda878b312ecd3dc",
+      "status": "abstained",
+      "reason": "Один или оба глаза закрыты либо сильно прищурены. Загрузите снимок с открытыми глазами.",
+      "milliseconds": 111.4
+    },
+    {
+      "sample": "sample-03.jpg",
+      "source_image": "WFLW_images/13--Interview/13_Interview_Interview_On_Location_13_896.jpg",
+      "source_sha256": "8eb2ae9d2fb7e15de0149ddc90000588b1eda3193bcf72ea5dbfd22131a7b9b0",
+      "input_sha256": "a54c013d2ec3e64e8a306b77ab3840b6f550ef4403b28a1e96a5332f5a2a043c",
+      "status": "calculated",
+      "value": 3.52,
+      "raw": 2.4099,
+      "inference_milliseconds": 353.29,
+      "crop_stability": {
+        "low": 3.4,
+        "high": 3.52,
+        "crop_raw_values": [
+          2.3698,
+          2.4099,
+          2.3615
+        ],
+        "flip_raw_delta": 0.513,
+        "status": "sensitive",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -26.09,
+        "pitch": 6.53,
+        "roll": -1.75,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Есть заметный наклон или поворот головы. Сравнивайте результат с более фронтальным снимком.",
+        "Балл заметно меняется при небольшом изменении кадрирования или отражении. Результат этого снимка нестабилен."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 0.77782,
+        "eye_tilt_1": 3.79305,
+        "eye_spacing": 0.5116399999999999,
+        "mouth_nose": 0.3940600000000001
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 1.17028,
+        "eye_tilt_1": 5.2721599999999995,
+        "eye_spacing": 0.39408,
+        "mouth_nose": 0.36382000000000003
+      },
+      "synthetic_variants": {
+        "brightness_085": {
+          "value": 3.69,
+          "delta": 0.17
+        },
+        "brightness_115": {
+          "value": 3.18,
+          "delta": -0.34
+        },
+        "blur_08": {
+          "value": 3.75,
+          "delta": 0.23
+        },
+        "mirror": {
+          "value": 3.34,
+          "delta": -0.18
+        },
+        "rotate_5": {
+          "value": 2.84,
+          "delta": -0.68
+        }
+      },
+      "milliseconds": 2144.52
+    },
+    {
+      "sample": "sample-04.jpg",
+      "source_image": "WFLW_images/51--Dresses/51_Dresses_wearingdress_51_99.jpg",
+      "source_sha256": "c1c4bff08907f8ebe2f57728fa70c3990ee7e353a1897b9850ae4278583c2e0b",
+      "input_sha256": "3e56f6706f3c27787b4c08c73c14030c638c454c4b649052ca1c552a6cf25f25",
+      "status": "calculated",
+      "value": 8.32,
+      "raw": 4.3295,
+      "inference_milliseconds": 326.79,
+      "crop_stability": {
+        "low": 7.51,
+        "high": 8.98,
+        "crop_raw_values": [
+          4.0051,
+          4.3295,
+          4.5935
+        ],
+        "flip_raw_delta": 0.1911,
+        "status": "sensitive",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -4.55,
+        "pitch": 7.89,
+        "roll": -4.92,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Балл заметно меняется при небольшом изменении кадрирования или отражении. Результат этого снимка нестабилен."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 1.0986399999999996,
+        "eye_tilt_1": 0.9710100000000006,
+        "eye_spacing": 0.09668999999999994,
+        "mouth_nose": 0.44772999999999996
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 2.2254400000000008,
+        "eye_tilt_1": 2.11428,
+        "eye_spacing": 0.2780499999999999,
+        "mouth_nose": 0.1681600000000001
+      },
+      "synthetic_variants": {
+        "brightness_085": {
+          "value": 8.33,
+          "delta": 0.01
+        },
+        "brightness_115": {
+          "value": 8.2,
+          "delta": -0.12
+        },
+        "blur_08": {
+          "value": 7.79,
+          "delta": -0.53
+        },
+        "mirror": {
+          "value": 8.9,
+          "delta": 0.58
+        },
+        "rotate_5": {
+          "value": 8.08,
+          "delta": -0.24
+        }
+      },
+      "milliseconds": 2101.73
+    },
+    {
+      "sample": "sample-05.jpg",
+      "source_image": "WFLW_images/50--Celebration_Or_Party/50_Celebration_Or_Party_houseparty_50_15.jpg",
+      "source_sha256": "f319ce1151c6b6e2207f4cb9684e35a37eaad35b7693dfbc043fa1208550be5a",
+      "input_sha256": "5015c9d94130cdaf34f69c5ff242ff817bd4f5bc7fd3f20391b7d32ea8ef884f",
+      "status": "calculated",
+      "value": 4.98,
+      "raw": 2.9901,
+      "inference_milliseconds": 324.07,
+      "crop_stability": {
+        "low": 4.36,
+        "high": 4.98,
+        "crop_raw_values": [
+          2.7441,
+          2.9901,
+          2.7543
+        ],
+        "flip_raw_delta": 0.0,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -3.65,
+        "pitch": 8.35,
+        "roll": 1.79,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 2.11344,
+        "eye_tilt_1": 1.6239300000000005,
+        "eye_spacing": 0.1380999999999999,
+        "mouth_nose": 0.11268999999999996
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 1.1165899999999995,
+        "eye_tilt_1": 0.9781999999999993,
+        "eye_spacing": 0.13534000000000002,
+        "mouth_nose": 0.34158
+      },
+      "synthetic_variants": {
+        "brightness_085": {
+          "value": 4.96,
+          "delta": -0.02
+        },
+        "brightness_115": {
+          "value": 4.56,
+          "delta": -0.42
+        },
+        "blur_08": {
+          "value": 4.97,
+          "delta": -0.01
+        },
+        "mirror": {
+          "value": 4.98,
+          "delta": 0.0
+        },
+        "rotate_5": {
+          "value": 4.02,
+          "delta": -0.96
+        }
+      },
+      "milliseconds": 2017.58
+    },
+    {
+      "sample": "sample-06.jpg",
+      "source_image": "WFLW_images/40--Gymnastics/40_Gymnastics_Gymnastics_40_755.jpg",
+      "source_sha256": "aa30565c9d0a9b02407820bd1c1bcdea5849729fed436956de09e7f24de05fc2",
+      "input_sha256": "1dd24c80d471597732bbbc9e09d6952e33b91cbd4187fe9354e5ac10d79e526d",
+      "status": "abstained",
+      "reason": "Сильный поворот или наклон головы. Для этой модели нужен снимок анфас с ровным положением головы.",
+      "milliseconds": 14.36
+    },
+    {
+      "sample": "sample-07.jpg",
+      "source_image": "WFLW_images/41--Swimming/41_Swimming_Swimmer_41_281.jpg",
+      "source_sha256": "49d3dbfd6a4a74f1a7fd9967ea9579b67434bd95c2df97f5e34ee631ce9c0bf8",
+      "input_sha256": "f24072ff6100a941736e39f90d30e7cb4a0e0701a0d654ffaadcbb8a1511e497",
+      "status": "abstained",
+      "reason": "Сильный поворот или наклон головы. Для этой модели нужен снимок анфас с ровным положением головы.",
+      "milliseconds": 15.6
+    },
+    {
+      "sample": "sample-08.jpg",
+      "source_image": "WFLW_images/35--Basketball/35_Basketball_basketballgame_ball_35_559.jpg",
+      "source_sha256": "9f868a4b7b6d2f89ac9b636029b0cf60cd8375f88323503d2933ed9666228214",
+      "input_sha256": "ec7067d85d97dd7c0b5faf7b10c9e4bad591d891cc0b7c3b4efe72c5437278d9",
+      "status": "abstained",
+      "reason": "Сильный поворот или наклон головы. Для этой модели нужен снимок анфас с ровным положением головы.",
+      "milliseconds": 16.6
+    },
+    {
+      "sample": "sample-09.jpg",
+      "source_image": "WFLW_images/16--Award_Ceremony/16_Award_Ceremony_Awards_Ceremony_16_455.jpg",
+      "source_sha256": "94cfd82aa77f4a86e9879ff34d697ae41be95c1fc4a9f15d5bbc1b1680fb897f",
+      "input_sha256": "5c3fba3c819252e7ac017c563f788b587d46f55b5d0f30a999cc37bf6f1518f6",
+      "status": "calculated",
+      "value": 6.52,
+      "raw": 3.609,
+      "inference_milliseconds": 336.56,
+      "crop_stability": {
+        "low": 6.22,
+        "high": 7.42,
+        "crop_raw_values": [
+          3.9668,
+          3.609,
+          3.4886
+        ],
+        "flip_raw_delta": 0.0558,
+        "status": "sensitive",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": 3.44,
+        "pitch": 5.51,
+        "roll": -14.0,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Выраженная мимика меняет форму глаз, рта и нижней области лица. Для сравнения нужен нейтральный портрет.",
+        "Балл заметно меняется при небольшом изменении кадрирования или отражении. Результат этого снимка нестабилен."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 2.073410000000001,
+        "eye_tilt_1": 3.3965899999999998,
+        "eye_spacing": 0.11519999999999997,
+        "mouth_nose": 0.15503
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 7.15501,
+        "eye_tilt_1": 0.10158999999999985,
+        "eye_spacing": 0.40198999999999996,
+        "mouth_nose": 0.14236999999999989
+      },
+      "milliseconds": 354.0
+    },
+    {
+      "sample": "sample-10.jpg",
+      "source_image": "WFLW_images/28--Sports_Fan/28_Sports_Fan_Sports_Fan_28_650.jpg",
+      "source_sha256": "37a17a28eeac5b34bbd9adc29bcb8b7bfc2c767010a12ce7168942c9e522143c",
+      "input_sha256": "ece227f5c95f7265d5a958b3e6eeb82e3ed9ade573fce1605c55bdbf66132636",
+      "status": "abstained",
+      "reason": "Лицо не найдено. Выберите чёткий снимок анфас без перекрытий.",
+      "milliseconds": 3.31
+    },
+    {
+      "sample": "sample-11.jpg",
+      "source_image": "WFLW_images/12--Group/12_Group_Large_Group_12_Group_Large_Group_12_391.jpg",
+      "source_sha256": "c2c5db16fd2c726bb7c61ba6a85eb45bec924ff14d4672b0c576898974919d94",
+      "input_sha256": "749980aab677b7dfa768829b23622fedc07d1b8fe09f1fbf88cca67ed06a7bdf",
+      "status": "calculated",
+      "value": 8.67,
+      "raw": 4.4684,
+      "inference_milliseconds": 344.52,
+      "crop_stability": {
+        "low": 7.4,
+        "high": 8.67,
+        "crop_raw_values": [
+          3.9722,
+          4.4684,
+          3.958
+        ],
+        "flip_raw_delta": 0.2882,
+        "status": "sensitive",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -10.47,
+        "pitch": 0.95,
+        "roll": -3.55,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Выраженная мимика меняет форму глаз, рта и нижней области лица. Для сравнения нужен нейтральный портрет.",
+        "Балл заметно меняется при небольшом изменении кадрирования или отражении. Результат этого снимка нестабилен."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 2.9299,
+        "eye_tilt_1": 0.9803599999999997,
+        "eye_spacing": 0.16524000000000005,
+        "mouth_nose": 0.11963000000000013
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 1.61074,
+        "eye_tilt_1": 0.24544000000000032,
+        "eye_spacing": 0.14283999999999986,
+        "mouth_nose": 0.29711
+      },
+      "milliseconds": 368.42
+    },
+    {
+      "sample": "sample-12.jpg",
+      "source_image": "WFLW_images/5--Car_Accident/5_Car_Accident_Accident_5_540.jpg",
+      "source_sha256": "6a1b910d9d3279edb5234eebb6879d61b910f7bab6bf8da8ce9b4da223020cc8",
+      "input_sha256": "86702662035bbeb45747d882f29c0c3e998c42c805cce12846f30b68f02d138d",
+      "status": "abstained",
+      "reason": "Сильный поворот или наклон головы. Для этой модели нужен снимок анфас с ровным положением головы.",
+      "milliseconds": 14.61
+    },
+    {
+      "sample": "sample-13.jpg",
+      "source_image": "WFLW_images/7--Cheering/7_Cheering_Cheering_7_502.jpg",
+      "source_sha256": "b17bda2b708d28446b2754422c22a6e99f0299589fb6791d3752b4edbf67e4d4",
+      "input_sha256": "2c1bb054be67bc487cff9ecbed5dc3ccd4498179c6953b235e5168e366f752b0",
+      "status": "abstained",
+      "reason": "Лицо не найдено. Выберите чёткий снимок анфас без перекрытий.",
+      "milliseconds": 3.64
+    },
+    {
+      "sample": "sample-14.jpg",
+      "source_image": "WFLW_images/0--Parade/0_Parade_Parade_0_468.jpg",
+      "source_sha256": "4cb236d5e0d99fd72cffd442606d381f08882c09440ceb85b75b5eb785468b58",
+      "input_sha256": "d8f12ee27e83b2a0d06a509e3ee6dfeda2e37c8d4b1c98a4a1b2049b6ba98a03",
+      "status": "calculated",
+      "value": 1.03,
+      "raw": 1.4118,
+      "inference_milliseconds": 330.49,
+      "crop_stability": {
+        "low": 1.03,
+        "high": 1.28,
+        "crop_raw_values": [
+          1.5012,
+          1.4118,
+          1.5137
+        ],
+        "flip_raw_delta": 0.0587,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": 2.02,
+        "pitch": 23.71,
+        "roll": -1.27,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Есть заметный наклон или поворот головы. Сравнивайте результат с более фронтальным снимком."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 0.858909999999999,
+        "eye_tilt_1": 1.24289,
+        "eye_spacing": 0.2413400000000001,
+        "mouth_nose": 0.11262000000000016
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 3.4201699999999997,
+        "eye_tilt_1": 0.9171300000000002,
+        "eye_spacing": 0.40010999999999997,
+        "mouth_nose": 0.41908999999999996
+      },
+      "milliseconds": 347.29
+    },
+    {
+      "sample": "sample-15.jpg",
+      "source_image": "WFLW_images/54--Rescue/54_Rescue_rescuepeople_54_187.jpg",
+      "source_sha256": "eb5f3daa22d989e7df1daa9b862ec9d0b702ff62ae660d2e5edfaf0bee72a7e7",
+      "input_sha256": "12828f691f0944d739b54bfa9275fcf3e79a5e38961ea5f0deea4ad43e65e626",
+      "status": "calculated",
+      "value": 6.77,
+      "raw": 3.7072,
+      "inference_milliseconds": 324.0,
+      "crop_stability": {
+        "low": 6.07,
+        "high": 6.77,
+        "crop_raw_values": [
+          3.429,
+          3.7072,
+          3.65
+        ],
+        "flip_raw_delta": 0.0071,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -9.3,
+        "pitch": -6.97,
+        "roll": -4.36,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 0.29478,
+        "eye_tilt_1": 0.15179000000000004,
+        "eye_spacing": 0.15100000000000002,
+        "mouth_nose": 0.8747200000000002
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 1.77354,
+        "eye_tilt_1": 0.62575,
+        "eye_spacing": 0.1552199999999999,
+        "mouth_nose": 0.7797100000000001
+      },
+      "milliseconds": 342.4
+    },
+    {
+      "sample": "sample-16.jpg",
+      "source_image": "WFLW_images/10--People_Marching/10_People_Marching_People_Marching_2_514.jpg",
+      "source_sha256": "123d94ba1de956e364bf27ba1c89aa8dd14ad2d11b0460c4204e252280104839",
+      "input_sha256": "807c943e7b8afb40942214b4917000ff38ae33c72037c2f0212769701a0abbb8",
+      "status": "abstained",
+      "reason": "Сильный поворот или наклон головы. Для этой модели нужен снимок анфас с ровным положением головы.",
+      "milliseconds": 13.94
+    },
+    {
+      "sample": "sample-17.jpg",
+      "source_image": "WFLW_images/20--Family_Group/20_Family_Group_Family_Group_20_777.jpg",
+      "source_sha256": "a14758ff7b08e18db9113a57b5d5f5e393ef25f348a0c91aaee5cee7c1804cca",
+      "input_sha256": "5c3a70ee87f8eaf5e0913e9de9fcbc851d4aa54f03636823989bb956500ac4cf",
+      "status": "abstained",
+      "reason": "Прогноз модели вышел за исходную шкалу 1–5. Надёжно показать общий балл для этого снимка не удалось; попробуйте другой нейтральный портрет.",
+      "milliseconds": 340.6
+    },
+    {
+      "sample": "sample-18.jpg",
+      "source_image": "WFLW_images/2--Demonstration/2_Demonstration_Political_Rally_2_128.jpg",
+      "source_sha256": "f0aa30a2af9092d664cd51b2c6c74f897bd087d44c94ee1ab198fb4341db705c",
+      "input_sha256": "52ec21ea4ff40f26026fd3e6a938405d92e1d8250606c858cebc730f8097ab7d",
+      "status": "calculated",
+      "value": 3.23,
+      "raw": 2.2903,
+      "inference_milliseconds": 341.09,
+      "crop_stability": {
+        "low": 3.23,
+        "high": 3.43,
+        "crop_raw_values": [
+          2.3727,
+          2.2903,
+          2.3218
+        ],
+        "flip_raw_delta": 0.1019,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": 3.02,
+        "pitch": -8.37,
+        "roll": -1.52,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 1.14233,
+        "eye_tilt_1": 2.26182,
+        "eye_spacing": 0.2298499999999999,
+        "mouth_nose": 0.14998999999999985
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 2.83911,
+        "eye_tilt_1": 1.5434599999999998,
+        "eye_spacing": 0.033050000000000024,
+        "mouth_nose": 0.21939999999999982
+      },
+      "milliseconds": 364.1
+    },
+    {
+      "sample": "sample-19.jpg",
+      "source_image": "WFLW_images/34--Baseball/34_Baseball_Baseball_34_867.jpg",
+      "source_sha256": "b282ec910d356e9f9a7d8fa2a1e1e9726da357fd8c9e8b57ebb1061d7cf74a49",
+      "input_sha256": "d59bcd67780c9e03e72a32eac738dbda1995e30eb8c233326e9d37551e77e1bb",
+      "status": "calculated",
+      "value": 3.8,
+      "raw": 2.5187,
+      "inference_milliseconds": 335.33,
+      "crop_stability": {
+        "low": 2.31,
+        "high": 3.8,
+        "crop_raw_values": [
+          1.9226,
+          2.5187,
+          2.4519
+        ],
+        "flip_raw_delta": 0.0047,
+        "status": "sensitive",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -3.82,
+        "pitch": 4.81,
+        "roll": -0.97,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Балл заметно меняется при небольшом изменении кадрирования или отражении. Результат этого снимка нестабилен."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 6.11181,
+        "eye_tilt_1": 6.84408,
+        "eye_spacing": 0.2650100000000001,
+        "mouth_nose": 0.1248499999999999
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 6.37792,
+        "eye_tilt_1": 5.97778,
+        "eye_spacing": 0.4573300000000001,
+        "mouth_nose": 0.051409999999999956
+      },
+      "milliseconds": 350.04
+    },
+    {
+      "sample": "sample-20.jpg",
+      "source_image": "WFLW_images/19--Couple/19_Couple_Couple_19_999.jpg",
+      "source_sha256": "7c3bc9d95c8f2a9f6e874e3376cbbbcfb7cc601a8a0fe5ee7dcb6d28ee22d463",
+      "input_sha256": "694ae7a447c2a09b2f71a53f48e28ab3c5d62160858387eee3367aa8ac21871c",
+      "status": "calculated",
+      "value": 2.81,
+      "raw": 2.1243,
+      "inference_milliseconds": 320.28,
+      "crop_stability": {
+        "low": 2.81,
+        "high": 3.28,
+        "crop_raw_values": [
+          2.3137,
+          2.1243,
+          2.2551
+        ],
+        "flip_raw_delta": 0.0665,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -7.07,
+        "pitch": -7.61,
+        "roll": 4.8,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 1.4732900000000004,
+        "eye_tilt_1": 1.4172899999999995,
+        "eye_spacing": 0.007120000000000015,
+        "mouth_nose": 0.10989000000000004
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 2.01925,
+        "eye_tilt_1": 3.22414,
+        "eye_spacing": 0.04993000000000003,
+        "mouth_nose": 0.63676
+      },
+      "milliseconds": 339.75
+    },
+    {
+      "sample": "sample-21.jpg",
+      "source_image": "WFLW_images/15--Stock_Market/15_Stock_Market_Stock_Market_15_846.jpg",
+      "source_sha256": "4b4b9f1d0cafa0f3802312bfa0dc33083377360844cffea204c45512916ec47b",
+      "input_sha256": "196d08969ee34c92a0e32ab405ef68709b819eb15ef5e18387898fde0a687bfc",
+      "status": "calculated",
+      "value": 8.13,
+      "raw": 4.2522,
+      "inference_milliseconds": 353.47,
+      "crop_stability": {
+        "low": 7.87,
+        "high": 8.13,
+        "crop_raw_values": [
+          4.2245,
+          4.2522,
+          4.1464
+        ],
+        "flip_raw_delta": 0.2893,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -10.37,
+        "pitch": 7.24,
+        "roll": 0.2,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Выраженная мимика меняет форму глаз, рта и нижней области лица. Для сравнения нужен нейтральный портрет."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 3.9184900000000003,
+        "eye_tilt_1": 4.00519,
+        "eye_spacing": 0.07861999999999991,
+        "mouth_nose": 0.19542000000000015
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 3.0969,
+        "eye_tilt_1": 3.85222,
+        "eye_spacing": 0.05823999999999985,
+        "mouth_nose": 0.06491000000000002
+      },
+      "milliseconds": 374.09
+    },
+    {
+      "sample": "sample-22.jpg",
+      "source_image": "WFLW_images/12--Group/12_Group_Group_12_Group_Group_12_627.jpg",
+      "source_sha256": "d3b8662f2435bdd71c5c0fe444aafa4133b4f1019956abaa0d527f2a0a4d9601",
+      "input_sha256": "87c7f353548e92d4e4cf23fc060901bee2fdaf72cce7fb633356fd65613ecdad",
+      "status": "calculated",
+      "value": 5.05,
+      "raw": 3.0205,
+      "inference_milliseconds": 324.92,
+      "crop_stability": {
+        "low": 4.42,
+        "high": 5.05,
+        "crop_raw_values": [
+          2.9099,
+          3.0205,
+          2.7697
+        ],
+        "flip_raw_delta": 0.4186,
+        "status": "sensitive",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": 0.15,
+        "pitch": 0.64,
+        "roll": -1.76,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Выраженная мимика меняет форму глаз, рта и нижней области лица. Для сравнения нужен нейтральный портрет.",
+        "Балл заметно меняется при небольшом изменении кадрирования или отражении. Результат этого снимка нестабилен."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 1.9272899999999993,
+        "eye_tilt_1": 2.6164499999999995,
+        "eye_spacing": 0.15105000000000013,
+        "mouth_nose": 0.08331999999999984
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 4.365279999999999,
+        "eye_tilt_1": 0.8084500000000001,
+        "eye_spacing": 0.20626999999999995,
+        "mouth_nose": 0.06797999999999993
+      },
+      "milliseconds": 343.44
+    },
+    {
+      "sample": "sample-23.jpg",
+      "source_image": "WFLW_images/18--Concerts/18_Concerts_Concerts_18_385.jpg",
+      "source_sha256": "b07d16275faa919930e3c1610abe0169d78ca43606ca9791c01364fd946213f9",
+      "input_sha256": "6233814ef7179a30852ceb3aa7b855ab53fad2b758225aab099b4045c55330cb",
+      "status": "calculated",
+      "value": 3.77,
+      "raw": 2.5067,
+      "inference_milliseconds": 285.24,
+      "crop_stability": {
+        "low": 3.51,
+        "high": 4.17,
+        "crop_raw_values": [
+          2.403,
+          2.5067,
+          2.6691
+        ],
+        "flip_raw_delta": 0.2833,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -3.19,
+        "pitch": -12.66,
+        "roll": -13.2,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Выраженная мимика меняет форму глаз, рта и нижней области лица. Для сравнения нужен нейтральный портрет."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 5.21148,
+        "eye_tilt_1": 4.1862900000000005,
+        "eye_spacing": 0.015710000000000113,
+        "mouth_nose": 0.10999000000000003
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 5.386,
+        "eye_tilt_1": 5.46694,
+        "eye_spacing": 0.11221999999999999,
+        "mouth_nose": 0.08166000000000007
+      },
+      "milliseconds": 299.64
+    },
+    {
+      "sample": "sample-24.jpg",
+      "source_image": "WFLW_images/13--Interview/13_Interview_Interview_2_People_Visible_13_36.jpg",
+      "source_sha256": "64856c5868660fc37d4f435941fb7ab7d29767c806e683e397a14f8e4afc03e3",
+      "input_sha256": "aa91db4d7690323a548e182a261ff5d1dc29bc6f849aef453b859dc243e38870",
+      "status": "calculated",
+      "value": 5.53,
+      "raw": 3.2137,
+      "inference_milliseconds": 337.37,
+      "crop_stability": {
+        "low": 4.24,
+        "high": 5.53,
+        "crop_raw_values": [
+          2.8208,
+          3.2137,
+          2.6973
+        ],
+        "flip_raw_delta": 0.8295,
+        "status": "sensitive",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -0.32,
+        "pitch": 2.13,
+        "roll": -3.0,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Выраженная мимика меняет форму глаз, рта и нижней области лица. Для сравнения нужен нейтральный портрет.",
+        "Балл заметно меняется при небольшом изменении кадрирования или отражении. Результат этого снимка нестабилен."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 4.737220000000001,
+        "eye_tilt_1": 0.62215,
+        "eye_spacing": 0.15437999999999996,
+        "mouth_nose": 0.2151400000000001
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 5.96147,
+        "eye_tilt_1": 0.08206000000000024,
+        "eye_spacing": 0.09051000000000009,
+        "mouth_nose": 0.055030000000000134
+      },
+      "milliseconds": 354.8
+    },
+    {
+      "sample": "sample-25.jpg",
+      "source_image": "WFLW_images/31--Waiter_Waitress/31_Waiter_Waitress_Waiter_Waitress_31_306.jpg",
+      "source_sha256": "83a87c71a15974dc478cc8800d368182222d605a1346d4480a58acae9f22e90c",
+      "input_sha256": "6a990b94d03879539f17eb7896c2af7260d8e2e2f06b72f3fa9d51eab228484d",
+      "status": "calculated",
+      "value": 9.15,
+      "raw": 4.6612,
+      "inference_milliseconds": 345.45,
+      "crop_stability": {
+        "low": 9.15,
+        "high": 9.89,
+        "crop_raw_values": [
+          4.7006,
+          4.6612,
+          4.9578
+        ],
+        "flip_raw_delta": 0.0567,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -9.23,
+        "pitch": 11.85,
+        "roll": -12.29,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Выраженная мимика меняет форму глаз, рта и нижней области лица. Для сравнения нужен нейтральный портрет."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 1.8447200000000006,
+        "eye_tilt_1": 0.6890400000000003,
+        "eye_spacing": 0.14228999999999992,
+        "mouth_nose": 0.11465999999999998
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 1.1963,
+        "eye_tilt_1": 0.3591799999999994,
+        "eye_spacing": 0.2126800000000001,
+        "mouth_nose": 0.009030000000000094
+      },
+      "milliseconds": 362.98
+    },
+    {
+      "sample": "sample-26.jpg",
+      "source_image": "WFLW_images/52--Photographers/52_Photographers_photographertakingphoto_52_267.jpg",
+      "source_sha256": "ab39d32c492d9d2fd752d8a3615d076e589ec9ecaf503cbf98e292f3ca2a4788",
+      "input_sha256": "2fbcc906a8b426079c99f36f47beb9d658310a50e16414174fdf74324ee7284d",
+      "status": "calculated",
+      "value": 7.11,
+      "raw": 3.8445,
+      "inference_milliseconds": 322.12,
+      "crop_stability": {
+        "low": 6.19,
+        "high": 7.11,
+        "crop_raw_values": [
+          3.4747,
+          3.8445,
+          3.7118
+        ],
+        "flip_raw_delta": 0.112,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": 14.57,
+        "pitch": 4.43,
+        "roll": 6.1,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Выраженная мимика меняет форму глаз, рта и нижней области лица. Для сравнения нужен нейтральный портрет."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 1.4987000000000004,
+        "eye_tilt_1": 0.8196000000000003,
+        "eye_spacing": 0.005369999999999875,
+        "mouth_nose": 0.37470000000000003
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 0.8112700000000004,
+        "eye_tilt_1": 1.42246,
+        "eye_spacing": 0.16159000000000012,
+        "mouth_nose": 0.22050999999999998
+      },
+      "milliseconds": 339.62
+    },
+    {
+      "sample": "sample-27.jpg",
+      "source_image": "WFLW_images/13--Interview/13_Interview_Interview_2_People_Visible_13_364.jpg",
+      "source_sha256": "a1e921cbaced85cdda3f5419f2168230b781ea09dd5d6a6be3b4bb1760b66a2f",
+      "input_sha256": "681d6f9bb71094d544622e4db5fa2ad3f061b75de9b53ee64170fef836c9c59e",
+      "status": "abstained",
+      "reason": "Сильный поворот или наклон головы. Для этой модели нужен снимок анфас с ровным положением головы.",
+      "milliseconds": 13.5
+    },
+    {
+      "sample": "sample-28.jpg",
+      "source_image": "WFLW_images/4--Dancing/4_Dancing_Dancing_4_539.jpg",
+      "source_sha256": "ad4dd87dca1d2e0b85f26ae53589f0ad42d6506b1117fe87122c0c3ec4d7f4d5",
+      "input_sha256": "872ecdbb02ed0e2eb77a41781b324a4b6b3c743b9d5c9a72068f0eeede566c07",
+      "status": "calculated",
+      "value": 7.35,
+      "raw": 3.9387,
+      "inference_milliseconds": 303.07,
+      "crop_stability": {
+        "low": 6.93,
+        "high": 7.41,
+        "crop_raw_values": [
+          3.774,
+          3.9387,
+          3.9658
+        ],
+        "flip_raw_delta": 0.2136,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": 13.28,
+        "pitch": 2.98,
+        "roll": 6.79,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 4.269869999999999,
+        "eye_tilt_1": 4.22672,
+        "eye_spacing": 0.15403999999999995,
+        "mouth_nose": 0.0036800000000001276
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 4.77079,
+        "eye_tilt_1": 4.763780000000001,
+        "eye_spacing": 0.09738000000000002,
+        "mouth_nose": 0.11424999999999996
+      },
+      "milliseconds": 322.08
+    },
+    {
+      "sample": "sample-29.jpg",
+      "source_image": "WFLW_images/13--Interview/13_Interview_Interview_2_People_Visible_13_305.jpg",
+      "source_sha256": "b8a8b21961180f78ad0af413e26993086c5eedff7dabe24b585c63e73cabed11",
+      "input_sha256": "0cbab79e8fa8183c1f50ab393b323e5fff6191253925381253b3a91566ba3162",
+      "status": "calculated",
+      "value": 8.1,
+      "raw": 4.2416,
+      "inference_milliseconds": 323.79,
+      "crop_stability": {
+        "low": 7.87,
+        "high": 8.59,
+        "crop_raw_values": [
+          4.1463,
+          4.2416,
+          4.4371
+        ],
+        "flip_raw_delta": 0.0849,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -12.96,
+        "pitch": -5.76,
+        "roll": -4.25,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Выраженная мимика меняет форму глаз, рта и нижней области лица. Для сравнения нужен нейтральный портрет."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 1.49317,
+        "eye_tilt_1": 1.71548,
+        "eye_spacing": 0.024310000000000054,
+        "mouth_nose": 0.00933000000000006
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 3.1863799999999998,
+        "eye_tilt_1": 0.36873,
+        "eye_spacing": 0.17967,
+        "mouth_nose": 0.029850000000000154
+      },
+      "milliseconds": 340.84
+    },
+    {
+      "sample": "sample-30.jpg",
+      "source_image": "WFLW_images/12--Group/12_Group_Group_12_Group_Group_12_824.jpg",
+      "source_sha256": "ffadd3e5e4f9eb1eff9f53ef2595890ef429c65a3c64eec0a0926e5bdb591e61",
+      "input_sha256": "e118e5a8bb0708db2d263338ece312b0ee52b8c3f08994bb2e117f98bcb165b6",
+      "status": "calculated",
+      "value": 3.72,
+      "raw": 2.4886,
+      "inference_milliseconds": 320.46,
+      "crop_stability": {
+        "low": 3.49,
+        "high": 3.72,
+        "crop_raw_values": [
+          2.4566,
+          2.4886,
+          2.3942
+        ],
+        "flip_raw_delta": 0.1698,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": 1.31,
+        "pitch": 0.29,
+        "roll": -3.95,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 2.0767800000000003,
+        "eye_tilt_1": 1.60731,
+        "eye_spacing": 0.13805,
+        "mouth_nose": 0.8222900000000002
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 0.5053699999999999,
+        "eye_tilt_1": 1.52229,
+        "eye_spacing": 0.3357399999999999,
+        "mouth_nose": 0.6757000000000002
+      },
+      "milliseconds": 337.99
+    },
+    {
+      "sample": "sample-31.jpg",
+      "source_image": "WFLW_images/30--Surgeons/30_Surgeons_Surgeons_30_289.jpg",
+      "source_sha256": "3e3c53df9e14386ef115874abd77545bfea0a054491cfcd60b881840c690283f",
+      "input_sha256": "0263ac17ac1247dfadd2791ed5d122a50bc2f4b2f83c2be6c33ba65ad64be4b3",
+      "status": "abstained",
+      "reason": "Один или оба глаза закрыты либо сильно прищурены. Загрузите снимок с открытыми глазами.",
+      "milliseconds": 15.4
+    },
+    {
+      "sample": "sample-32.jpg",
+      "source_image": "WFLW_images/2--Demonstration/2_Demonstration_Political_Rally_2_851.jpg",
+      "source_sha256": "98bed68484e62785a11fe063f9ab65f5a95fa2af8de9e841baa521580c782128",
+      "input_sha256": "3630a86ab8e65d5eeddff431483f280758e92b3ae0461ad30810a07605446dcf",
+      "status": "calculated",
+      "value": 3.17,
+      "raw": 2.2699,
+      "inference_milliseconds": 329.96,
+      "crop_stability": {
+        "low": 3.17,
+        "high": 3.87,
+        "crop_raw_values": [
+          2.5472,
+          2.2699,
+          2.4692
+        ],
+        "flip_raw_delta": 0.1384,
+        "status": "stable_in_this_check",
+        "interpretation": "Разброс при трёх отступах кадрирования 12/20/28% и отражении. Это техническая чувствительность, не доверительный интервал."
+      },
+      "pose": {
+        "yaw": -4.45,
+        "pitch": 8.44,
+        "roll": 4.14,
+        "kind": "model_pose_estimate"
+      },
+      "warnings": [
+        "Низкая резкость уменьшенной области. Размытие может смещать ориентиры."
+      ],
+      "geometry_absolute_error": {
+        "eye_tilt_0": 0.07901999999999987,
+        "eye_tilt_1": 1.2232000000000003,
+        "eye_spacing": 0.12293999999999983,
+        "mouth_nose": 0.056400000000000006
+      },
+      "legacy_geometry_absolute_error": {
+        "eye_tilt_0": 0.7762400000000005,
+        "eye_tilt_1": 0.32192000000000043,
+        "eye_spacing": 0.06942999999999988,
+        "mouth_nose": 0.2827599999999999
+      },
+      "milliseconds": 349.87
+    }
+  ]
+}

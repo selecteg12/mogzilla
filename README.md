@@ -1,109 +1,109 @@
-# FaceMetrics AI
+# mogzilla
 
-Приложение для анализа пропорций лица на фотографии: автоматический поиск лица, 98 ориентиров, измерения и субъективный балл по геометрии. Под исходным снимком показаны точки, отклонения и вклад каждого показателя в итог. Интерфейс на русском. Нейросети обучены с нуля и работают в Python без внешнего AI API.
+A Python-based portrait assessment app with a looksmaxxing-inspired 1–10 score, 478 facial landmarks and an interactive breakdown of eight facial regions. Upload a portrait or use the camera, inspect measurements and formulas, and explore example results from **sub 3** to **true adam**.
 
-## Запуск в подготовленной папке
+The interface uses a light editorial design with a custom animated-reaction mascot. Image inference runs locally; the UI is currently in Russian.
 
-В PowerShell из папки проекта:
+## What is looksmaxxing?
 
-```powershell
-.\start.ps1
-```
+**Looksmaxxing** is an online culture focused on improving appearance through grooming, styling and other changes. Its male beauty discussions often favour a model-like aesthetic and use their own vocabulary for facial proportions and overall presentation. These are community preferences, not a universal or scientifically established beauty standard. [Research on the community](https://doi.org/10.1177/1357034X251363787) describes these ideals and their social context.
 
-Откройте **http://127.0.0.1:8000**. Остановка — `Ctrl+C`. Собранный React-интерфейс и REST API обслуживает один Python-процесс. Нейросети выполняются на сервере приложения без внешнего AI API и предобученного детектора. При локальном запуске фото остаётся на этом компьютере; после публикации браузер отправляет его вашему серверу по HTTPS для расчёта в памяти.
+Commonly discussed criteria include:
 
-В этой рабочей папке уже созданы `.venv`, `frontend/dist`, подготовленные данные и результаты экспериментов. Для установки на другом компьютере используйте Python 3.12, Node.js 22.12+ и pnpm; выполните `setup.ps1`. Установленные при разработке версии фиксируются в `requirements-lock.txt`, frontend — в `frontend/pnpm-lock.yaml`.
+| Area | Features often favoured in these communities |
+| --- | --- |
+| Eyes and brows | Almond-shaped or hooded “hunter eyes”, a neutral-to-positive outer-corner tilt, low-set and defined brows |
+| Jaw and chin | A defined jaw contour and a balanced, prominent chin |
+| Cheekbones and proportions | Visible cheekbone definition and balanced relationships between the facial regions |
+| Harmony and symmetry | A coherent combination of features and limited visible asymmetry |
+| Presentation | Clear-looking skin, well-kept hair and effective grooming |
 
-Для переноса на хостинг подготовлены Dockerfile, конфигурация FastAPI для Vercel, отдельные зависимости инференса и проверка комплекта перед запуском. Linux-контейнер проверяется в GitHub Actions. Инструкции и текущий статус публикации — [reports/DEPLOYMENT.md](reports/DEPLOYMENT.md).
+mogzilla borrows this vocabulary for its presentation and category names. Aesthetic labels are subjective; the app does not establish a person's worth, health, body-fat percentage or suitability for modelling.
 
-## Как пользоваться
+## Features
 
-1. Загрузите JPEG/PNG/WebP или разрешите браузеру сделать снимок с камеры.
-2. Приложение автоматически находит и уточняет область лица, проверяет кадрирование, предсказывает 98 точек и рассчитывает рейтинг. Если проверка рамки или устойчивости точек не пройдена, вместо балла показывается отказ анализа. Дополнительных подтверждений, кнопки запуска анализа и настройки весов нет.
-3. Наверху остаётся исходная фотография без наложений, рядом — общий балл по геометрии.
-4. Под оригиналом одновременно показаны четыре этапа на копиях того же снимка: выделение и подготовка области, точки модели, измерения и отклонения, сумма вкладов в рейтинг. Вкладки не используются.
-5. Наведение на параметр/«?» поясняет смысл, нажатие выделяет его отрезки. В карточках есть формулы, координаты, промежуточные значения и ошибка измерения на тесте. Снятие баллов показано численно по каждому критерию.
-6. Если автопоиск не нашёл лицо, можно загрузить более подходящее фото или обвести лицо на снимке; анализ выделенной области начнётся сразу. Без обученного checkpoint сервер отвечает 503, без фиктивных результатов. Подробности шкалы — [reports/RATING.md](reports/RATING.md).
-7. «Сохранить расчёты» сохраняет геометрические измерения в JSON на устройство по вашему нажатию, без фотографии. Автоматического сохранения пользовательских снимков нет.
+- Photo upload, drag-and-drop and camera capture with front/rear camera switching.
+- A visual score, a named tier and a mascot reaction.
+- Eight interactive regions: eyes, brows, upper face, midface, nose/mouth, jaw/chin, symmetry and skin/lighting.
+- Landmark overlays, measured segments, formulas and coordinate-level explanations.
+- Technical checks for face size, pose, cropping, blur, lighting and closed eyes.
+- Crop/reflection sensitivity checks and JSON export without the uploaded photograph.
+- An example gallery accessible from **Examples** in the top navigation and the homepage poster.
 
-Главная страница начинается с загрузки фотографии. Архитектуры, выборки и результаты экспериментов находятся в документации проекта; в интерфейсе остаются пояснения к результату и советы по съёмке.
+## Data and annotations
 
-Верхняя вкладка **«Модельные значения»** показывает диапазоны пяти критериев на 10/10, построенную по ним геометрическую схему и три исследовательских фотопримера с фактическими баллами. Схема явно отделена от предсказаний CNN. Проверенных фото со всеми пятью критериями на 10/10 в просмотренной выборке не найдено; близкие примеры не переименованы в «идеальные». Навигация между вкладками сохраняет текущий загруженный снимок в памяти браузера. Подробнее — [reports/REFERENCE_VALUES.md](reports/REFERENCE_VALUES.md).
+Additional portrait annotations were supplied as **model-scout ratings on a 1–10 scale**. They are separate from the original crowd-average labels in the source datasets. The available exports do not establish agreement across a representative panel of scouts.
 
-## Что считать качеством
+| Source | Role in the project |
+| --- | --- |
+| [SCUT-FBP5500](https://github.com/HCIILAB/SCUT-FBP5500-Database-Release) | Human-rated portraits underlying the initial visual scoring model |
+| [MEBeauty](https://huggingface.co/datasets/dr-irina-lebedeva/MEBeauty-Facial-Beauty-Prediction) | Additional photographs with project-specific scout annotations |
+| [Pinterest portrait collection](data/README.md) | Supplied digitals and other portraits, with confirmed scout ratings; available as a separate archive |
+| [WFLW](https://github.com/wywu/LAB) | Original landmark-model training and a technical audit of geometric measurements |
+| [AFW / 300-W](https://ibug.doc.ic.ac.uk/resources/300-W/) | An earlier 68-landmark experiment using the AFW subset |
+| [WIDER FACE](http://shuoyang1213.me/WIDERFACE/) | Additional face-detection training data in an earlier version |
 
-Актуальные **измеренные** результаты находятся в [reports/RESEARCH.md](reports/RESEARCH.md), машиночитаемые — в [reports/run/evaluation.json](reports/run/evaluation.json). Не путайте NME с вероятностью правильного ответа. Ошибка на тесте усреднена по выборке; уверенность для отдельного фото не откалибрована. Отдельно измеряется MAE каждого угла/отношения относительно координат разметки.
+WFLW, AFW and WIDER FACE do not provide attractiveness targets for the current score. The Pinterest archive excludes photographs from the research datasets. Third-party photographs retain their original rights; no unrestricted image license is implied by this repository.
 
-Два датасета не объединяются: AFW/300-W используют 68 точек, WFLW — 98, включая центры зрачков. Запуски имеют отдельные выходные слои и checkpoint. AFW — небольшой базовый эксперимент; основной набор — WFLW. Нормировки NME различаются, поэтому проценты между ними нельзя напрямую сравнивать.
+## How the result is produced
 
-Все показатели относятся к **проекции на конкретном снимке**, а не к объективной привлекательности или строению костей. Рейтинг привлекательности по геометрии — субъективная формула соответствия выбранным предпочтениям. WFLW и AFW не содержат оценок привлекательности, такой предсказательной модели здесь нет. Классов внешности, оценки жира или медицинских выводов нет.
+Python decodes the photograph, locates a face, checks technical suitability and calculates the visual score from face and wider-head crops. Landmark-based geometry is calculated separately. The geometric measurements describe the photograph; they are not a causal explanation of the image model's score.
 
-## Повторить обучение с нуля
+The current trained scoring profile is revision `33c59a04cba4`. The repository includes its scoring head and updated visual block; setup downloads pinned upstream model assets and verifies their SHA-256 hashes. Model provenance, preprocessing, artifact hashes and limitations are documented in [the scoring report](reports/SCORING.md).
 
-Обучение использует локальный CPU, по умолчанию 4 потока. Перед длительным запуском выполните `--estimate`. `--max-minutes` ограничивает цикл обучения; начальная загрузка данных, текущая валидация и запись отчёта могут завершиться после указанного времени. Платные ресурсы не вызываются.
+Tier names are project-defined intervals applied to the displayed score. They are not percentiles or a separate classifier. The displayed crop range describes sensitivity on one image, not a confidence interval.
 
-```powershell
-# WFLW: архивы пользователя в корне проекта
-.\.venv\Scripts\python.exe scripts/extract_wflw.py WFLW_images.tar.gz wflw_annotations.tar
-.\.venv\Scripts\python.exe -m training.prepare --dataset wflw --root training/datasets/WFLW --out training/datasets/prepared-wflw
+## Validation
 
-# Оценка времени: один forward/backward без обновления весов
-.\.venv\Scripts\python.exe -m training.train --data training/datasets/prepared-wflw --architecture coordinates --out training/experiments/new-coordinates --epochs 30 --estimate
+The latest usable annotated collection contains **717 fitting photographs and 200 held-out photographs**. On the held-out set, MAE is **1.20 points out of 10**, with **51%** of predictions within one point of the annotation.
 
-# Два независимых случайно инициализированных обучения
-.\.venv\Scripts\python.exe -m training.train --data training/datasets/prepared-wflw --architecture coordinates --out training/experiments/new-coordinates --epochs 30 --max-minutes 15
-.\.venv\Scripts\python.exe -m training.train --data training/datasets/prepared-wflw --architecture heatmaps --out training/experiments/new-heatmaps --epochs 30 --max-minutes 20
+The evaluation is limited: some held-out results were inspected in earlier experiments, full separation by person is not established, and overlap with upstream datasets cannot be ruled out. A small selected collection does not establish universal ranking accuracy. See [the scoring report](reports/SCORING.md) and [the technical geometry audit](reports/HOLISTIC.md).
 
-# Сначала выбор по validation NME, затем однократный тест выбранной модели
-.\.venv\Scripts\python.exe -m training.evaluate --data training/datasets/prepared-wflw --checkpoints training/experiments/new-coordinates/best.pt training/experiments/new-heatmaps/best.pt --report reports/run --export training/checkpoints/selected.pt
-.\.venv\Scripts\python.exe scripts/write_report.py
-```
+## Run locally
 
-Для более длительного эксперимента используйте новые `--out` и заранее выбранный бюджет. Повторное изменение гиперпараметров после просмотра test превращает этот test в исследовательский; для честного окончательного вывода потребуется новая независимая выборка. Приложение автоматически подхватывает новый оценённый `selected.pt`. Можно выбрать другой собственный файл через `FACEMETRICS_CHECKPOINT`.
-
-Для AFW:
-
-```powershell
-.\.venv\Scripts\python.exe scripts/import_afw.py afw.zip
-.\.venv\Scripts\python.exe -m training.prepare --dataset 300w --protocol afw-only --root training/datasets/300w --out training/datasets/prepared-afw
-```
-
-Если распакована полная структура `afw`, `helen/trainset`, `helen/testset`, `lfpw/trainset`, `lfpw/testset`, `ibug`, используйте `--protocol official`. Координаты `.pts` переводятся из 1-based в 0-based. Изображения одного снимка группируются по SHA-256 **декодированных RGB-пикселей**, включая разные лица и копии с разными именами. Снимки из test удаляются из development; test сохраняется. Из оставшихся development-снимков 15% отводятся валидации. Идентичности людей в данных не известны.
-
-## Архитектура
-
-Обучение и независимая проверка поиска целого лица, дополнительные данные WIDER FACE и ограничения описаны в [reports/FACE_DETECTION.md](reports/FACE_DETECTION.md). Разметки рамок и 98 ориентиров используются раздельно; готовые детекторы не подключаются.
-
-```text
-backend/app/             FastAPI: загрузка без дискового spooling, API, раздача React
-backend/ml/              собственные CNN, loss, инференс, NME / Failure Rate
-backend/preprocessing/   декодирование, EXIF, общий аффинный crop, признаки качества
-backend/geometry/        топология 68/98, формулы, исходные координаты и ограничения
-backend/tests/           математика, преобразования, градиенты, валидация API
-frontend/src/            React + TypeScript + Tailwind, русский интерфейс
-training/                импорт, аугментации, случайная инициализация, оценка, графики
-reports/                 источники, протокол, реальные метрики, анализ ошибок
-```
-
-Регрессия: Conv/GroupNorm/SiLU с каналами 16→32→64→96, spatial pooling 4×4, MLP 256→2N, sigmoid. Карты: энкодер 16→32→64, skip-соединения, декодер, N карт 48×48 и spatial soft-argmax. Нет torchvision, MediaPipe, dlib или скачивания весов. Loss регрессии — Smooth L1; карт — Smooth L1 + 0.1 × KL по нормированным Gaussian target heatmaps. Не сравнивайте абсолютные loss двух разных архитектур; сравнивайте validation NME.
-
-Аугментации: поворот ±12°, масштаб 0.94–1.06, перенос ±2.5%, отражение с перестановкой семантических точек, яркость/контраст, небольшое размытие. Оптимизатор AdamW, clipping градиента 5. Seed 42; зафиксированы конфигурация, история и хеш manifest. Полная битовая воспроизводимость между разными версиями PyTorch/CPU не гарантируется.
-
-## API и проверка
-
-- `GET /api/health`, `/api/model`, `/api/research`.
-- `POST /api/prepare` и `/api/analyze`: бинарное JPEG/PNG/WebP в теле; `x,y,width,height` в query, **в пикселях изображения после EXIF-ориентации**. Multipart не используется: вход полностью ограничен в памяти до 10 МБ. Максимум 20 Мп, минимум 32×32.
-- `GET /api/research/figure/{name}`: только разрешённые имена графиков, без произвольных путей. Фотографии датасета не раздаются отдельным файловым каталогом.
-- `/docs`: техническое описание REST.
+Requirements: **Python 3.12**, **Node.js 22.12+** and **pnpm**. The scripts can also discover the bundled Codex runtimes on Windows.
 
 ```powershell
-.\.venv\Scripts\python.exe -m pytest -q --basetemp=.test-tmp
+git clone https://github.com/selecteg12/facemetrics-ai.git
+cd facemetrics-ai
+git switch codex/holistic-rating
+.\setup.ps1
+.\start-mogzilla.ps1
+```
+
+Open **http://127.0.0.1:8008**. Stop the server with `Ctrl+C`. The trained profile is loaded from `training/checkpoints/holistic`; setup downloads approximately 98 MB of upstream assets to the same directory. Dependency versions are pinned in `requirements-lock.txt` and `frontend/pnpm-lock.yaml`.
+
+For frontend development, run `start.ps1 -Port 8001`, then `pnpm dev` in `frontend/`. The development proxy targets port 8001. The repository's earlier FaceMetrics implementation remains in the `master` branch.
+
+## Checks
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 -m pytest -q --basetemp=.test-tmp
 cd frontend
+pnpm test:camera
+pnpm test:rating
+pnpm test:regions
 pnpm build
 ```
 
-Для разработки запускайте FastAPI на 8000 и `pnpm dev` в `frontend` на 5173; Vite проксирует `/api`. Встроенная камера требует localhost либо HTTPS и явного разрешения браузера. Для доступа к изображениям используется только RAM, ответы имеют `Cache-Control: no-store`, EXIF и лишние метаданные снимаются при клиентской нормализации. URL.createObjectURL и MediaStream освобождаются. Нет аналитики, cookies, localStorage снимков, базы лиц и распознавания личности.
+Tests requiring undistributed research samples skip when those samples are absent. Scripts in `training/` cover the earlier landmark/detection experiments; scripts in `scripts/` cover scoring-profile preparation, fitting and evaluation.
 
-## Источники и границы
+## Project layout
 
-Источники, условия доступа, обнаруженные пересечения и покрытие ориентиров: [reports/DATASETS.md](reports/DATASETS.md), [reports/MEASUREMENTS.md](reports/MEASUREMENTS.md). Датасеты, архивы, промежуточные веса и приватные проверки исключены из Git. Для рабочего переноса включены только две активные собственные модели — `selected.pt` и `regions-selected.pt`. Не публикуйте датасеты без соответствующих прав. Исследовательские условия 300-W не разрешают коммерческое применение. Лицензия кода стороннего проекта не заменяет условия на фотографии.
+```text
+backend/       FastAPI, neural inference, geometry and tests
+frontend/      React + TypeScript UI, mascot and example gallery
+training/      Training code and selected scoring checkpoints
+data/          Pinterest portrait archive and provenance notes
+scripts/       Setup, evaluation, annotation and serving utilities
+reports/       Dataset notes, experiments and measured limitations
+tools/         Local portrait annotation tool
+```
+
+## Privacy and research use
+
+Uploaded photographs are processed in memory. The app does not automatically save uploads, call external AI APIs, maintain a face database or perform identity recognition. Camera access requires the browser's permission. Photo uploads are limited to JPEG, PNG or WebP, up to 10 MB and 20 megapixels.
+
+SCUT-FBP5500, MEBeauty and upstream model assets retain their research-use conditions. This is a non-commercial research project; public repository visibility does not replace the licenses of datasets, weights, photographs or dependencies. The Pinterest collection is credited to its supplied source, with original URLs preserved where available.
+
+Docker and Vercel configuration files are retained from earlier iterations. The current scoring release is verified locally; those files alone do not establish a verified hosted deployment of this revision.

@@ -1,0 +1,163 @@
+{
+  "schema": "facelab.personal-head.v1",
+  "model_id": "facelab/personal-upper-2026-10-21",
+  "weights_sha256": "ec9c55e3bdd87f930ba77aafd5db95e99d163543d7cb7d6d351dddf9f65ab48f",
+  "backbone_sha256": "54f55b2d03fe68b9bdb992d4992ea7d245b4dd25e0d376dca8f599463ff4a312",
+  "dataset_manifest_sha256": "c09552fa29503ebf519e2a4afcbeeca9fb5432605cebcc1e3b05fbf3ab9ea4da",
+  "feature_mode": "dual",
+  "residual": false,
+  "alpha": 0.1,
+  "fit_images": 717,
+  "test_images": 200,
+  "total_rated_images": 922,
+  "identity_protocol": "Conservative visual grouping of possible repeated portraits. MEBeauty uses photo IDs only; no biometric matching was performed. Subject-disjoint evaluation and non-overlap with upstream training data are not established. Earlier audit results were already inspected.",
+  "enabled": true,
+  "validation": {
+    "preview_only": true,
+    "evaluation_reused": true,
+    "original": {
+      "n": 200,
+      "mae": 1.9462,
+      "rmse": 2.3315,
+      "within_one": 0.285,
+      "pearson": 0.449
+    },
+    "personal": {
+      "n": 200,
+      "mae": 1.2011,
+      "rmse": 1.5075,
+      "within_one": 0.51,
+      "pearson": 0.7156
+    },
+    "ranking": {
+      "original": {
+        "spearman": 0.4456,
+        "pairwise_at_least_two_points": 0.7132,
+        "pairs": 12458
+      },
+      "personal": {
+        "spearman": 0.6926,
+        "pairwise_at_least_two_points": 0.8471,
+        "pairs": 12458
+      }
+    },
+    "fresh_comparison": {
+      "previous": {
+        "n": 27,
+        "mae": 2.3483,
+        "rmse": 2.7467,
+        "within_one": 0.2593,
+        "pearson": 0.0231,
+        "spearman": 0.0456,
+        "pairwise_at_least_two_points": 0.481,
+        "pairs": 158,
+        "upper": {
+          "n": 17,
+          "mae": 3.038,
+          "rmse": 3.2365,
+          "within_one": 0.0,
+          "pearson": 0.0993,
+          "mean_target": 9.7647,
+          "mean_prediction": 6.7267,
+          "signed_error": -3.038
+        }
+      },
+      "updated": {
+        "n": 27,
+        "mae": 1.2958,
+        "rmse": 1.6195,
+        "within_one": 0.4444,
+        "pearson": 0.1903,
+        "spearman": 0.2073,
+        "pairwise_at_least_two_points": 0.5886,
+        "pairs": 158,
+        "upper": {
+          "n": 17,
+          "mae": 1.1022,
+          "rmse": 1.4963,
+          "within_one": 0.5294,
+          "pearson": 0.2796,
+          "mean_target": 9.7647,
+          "mean_prediction": 8.6625,
+          "signed_error": -1.1022
+        }
+      }
+    },
+    "new_upper_audit": {
+      "previous": {
+        "n": 27,
+        "mae": 2.3483,
+        "rmse": 2.7467,
+        "within_one": 0.2593,
+        "pearson": 0.0231,
+        "spearman": 0.0456,
+        "pairwise_at_least_two_points": 0.481,
+        "pairs": 158,
+        "upper": {
+          "n": 17,
+          "mae": 3.038,
+          "rmse": 3.2365,
+          "within_one": 0.0,
+          "pearson": 0.0993,
+          "mean_target": 9.7647,
+          "mean_prediction": 6.7267,
+          "signed_error": -3.038
+        }
+      },
+      "updated_frozen": {
+        "n": 27,
+        "mae": 1.3782,
+        "rmse": 1.6557,
+        "within_one": 0.4074,
+        "pearson": 0.2014,
+        "spearman": 0.1979,
+        "pairwise_at_least_two_points": 0.5949,
+        "pairs": 158,
+        "upper": {
+          "n": 17,
+          "mae": 1.3627,
+          "rmse": 1.6937,
+          "within_one": 0.4118,
+          "pearson": 0.2966,
+          "mean_target": 9.7647,
+          "mean_prediction": 8.402,
+          "signed_error": -1.3627
+        }
+      },
+      "updated": {
+        "n": 27,
+        "mae": 1.2958,
+        "rmse": 1.6195,
+        "within_one": 0.4444,
+        "pearson": 0.1903,
+        "spearman": 0.2073,
+        "pairwise_at_least_two_points": 0.5886,
+        "pairs": 158,
+        "upper": {
+          "n": 17,
+          "mae": 1.1022,
+          "rmse": 1.4963,
+          "within_one": 0.5294,
+          "pearson": 0.2796,
+          "mean_target": 9.7647,
+          "mean_prediction": 8.6625,
+          "signed_error": -1.1022
+        }
+      }
+    },
+    "subject_disjoint_evaluation": false
+  },
+  "training_method": "last_bottleneck_finetuning",
+  "selected_epochs": 4,
+  "visual_adapter": {
+    "schema": "facelab.last-bottleneck.v1",
+    "block": "layer4.2",
+    "file": "personal-visual.pt",
+    "sha256": "36afe3303698f0e21de341934046268deac46009815611991cb2924c34e9dda8"
+  },
+  "revision": "33c59a04cba4",
+  "label_source": {
+    "description": "Model-scout ratings, as reported by the project maintainer.",
+    "rater_identity_audit_available": false
+  }
+}

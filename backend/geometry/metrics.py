@@ -104,8 +104,8 @@ def measure(points: np.ndarray, dataset: str) -> dict:
     add("eye_spacing","Межглазное расстояние (one-eye ratio)","Глаза",inter/mean_eye_width if mean_eye_width>1e-6 else None,"ratio",
         [*t.corners[0],*t.corners[1]],"inner-corner distance / mean(left eye width, right eye width)",
         {"inner_distance_px":inter,"mean_eye_width_px":mean_eye_width})
-    mouth = (48,54) if dataset == "300w" else (76,82)
-    alar = (31,35) if dataset == "300w" else (55,59)
+    mouth = (61,291) if dataset == "mediapipe" else (48,54) if dataset == "300w" else (76,82)
+    alar = (98,327) if dataset == "mediapipe" else (31,35) if dataset == "300w" else (55,59)
     nose_width = distance(*alar)
     add("mouth_nose","Ширина рта / ширина носа","Пропорции",distance(*mouth)/nose_width if nose_width>1e-6 else None,"ratio",[*mouth,*alar],
         f"||p{mouth[0]}−p{mouth[1]}|| / ||p{alar[0]}−p{alar[1]}||",{"mouth_width_px":distance(*mouth),"nose_width_px":nose_width})
@@ -113,14 +113,29 @@ def measure(points: np.ndarray, dataset: str) -> dict:
                    {"term":"Anatomical bigonial / bizygomatic ratio, fWHR","reason":"Gonion и zygion не размечены как анатомические ориентиры; контурные приближения им не эквивалентны."},
                    {"term":"Gonial angle, orbital vector, chin projection","reason":"Нужны подходящие профильные/3D-данные и дополнительные точки."},
                    {"term":"Upper eyelid exposure","reason":"Складка верхнего века не размечена."}]
-    if dataset == "wflw":
-        ipd = distance(96,97)
-        pupil_mid = (q[96]+q[97])/2
-        lip_height = abs(float(q[79,1]-pupil_mid[1]))
+    if dataset in {"wflw","mediapipe"}:
+        left,right,lip = (468,473,0) if dataset == "mediapipe" else (96,97,79)
+        ipd = distance(left,right)
+        pupil_mid = (q[left]+q[right])/2
+        lip_height = abs(float(q[lip,1]-pupil_mid[1]))
         add("midface_pupils","Midface ratio: зрачки — верхняя губа","Пропорции",ipd/lip_height if lip_height>1e-6 else None,"ratio",
-            [96,97,79,*t.eyes[0],*t.eyes[1]],"||p96−p97|| / |q79.y − (q96.y+q97.y)/2|",
-            {"pupil_distance_px":ipd,"aligned_pupil_to_upper_lip_height_px":lip_height,"upper_lip_point":79,"roll_degrees":math.degrees(roll)},
+            [left,right,lip,*t.eyes[0],*t.eyes[1]],f"||p{left}−p{right}|| / |q{lip}.y − (q{left}.y+q{right}.y)/2|",
+            {"pupil_distance_px":ipd,"aligned_pupil_to_upper_lip_height_px":lip_height,"upper_lip_point":lip,"roll_degrees":math.degrees(roll)},
             common+" Выбрано конкретное определение, используемое в сообществе, а не универсальный анатомический стандарт. Положение зрачков зависит от направления взгляда.")
+        if dataset == "mediapipe":
+            upper = abs(float(q[168,1]-q[10,1]))
+            middle = abs(float(q[2,1]-q[168,1]))
+            add("visible_upper_middle","Видимая верхняя область / средний сегмент","Верхняя область",upper/middle if middle>1e-6 else None,"ratio",[10,168,2],
+                "|q168.y − q10.y| / |q2.y − q168.y|",{"visible_upper_height_px":upper,"middle_height_px":middle},
+                common+" Верхняя точка — видимый контур лба, не линия роста волос. Это не классические трети лица.")
+            lip_height = distance(0,17)
+            add("chin_lip","Подбородочный сегмент / высота губ","Нижняя часть лица",distance(17,152)/lip_height if lip_height>1e-6 else None,"ratio",[0,17,152],
+                "||p17−p152|| / ||p0−p17||",{"lower_lip_to_chin_px":distance(17,152),"outer_lip_height_px":lip_height},
+                common+" Нижняя губа, подбородок и внешняя высота губ в плоскости снимка; мимика меняет величину.")
+            add("mouth_pupils","Ширина рта / межзрачковое расстояние","Пропорции",distance(61,291)/ipd if ipd>1e-6 else None,"ratio",[61,291,468,473],
+                "||p61−p291|| / ||p468−p473||",{"mouth_width_px":distance(61,291),"pupil_distance_px":ipd})
+            add("pupil_face","Межзрачковое расстояние / ширина контура","Глаза",ipd/width,"ratio",[468,473,234,454],
+                "||p468−p473|| / ||p234−p454||",{"pupil_distance_px":ipd,"contour_width_px":width})
     else:
         unavailable.append({"term":"Midface ratio through pupil centers","reason":"В 300-W/AFW зрачки не размечены. Центры контуров глаз не подставляются вместо зрачков."})
     return {"metrics":rows,"unavailable":unavailable,"roll_degrees":math.degrees(roll),"axis":{"origin":origin.tolist(),"direction":[-s,c]},

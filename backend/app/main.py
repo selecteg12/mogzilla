@@ -16,12 +16,42 @@ from backend.geometry.reference import ideal_reference
 from backend.geometry.reference_gallery import gallery_is_current
 from backend.ml.inference import Predictor,ModelUnavailable
 from backend.ml.regions import RegionFinder
+from backend.ml.holistic import HolisticAnalyzer
 from backend.preprocessing.images import MAX_BYTES,crop_image,decode_image,encode_image,image_quality
 
 ROOT = Path(__file__).resolve().parents[2]
 predictor = Predictor()
 region_finder = RegionFinder()
-app = FastAPI(title="FaceMetrics AI",version="0.1.0",description="Local landmark inference and explainable geometry. Обучение с нуля.")
+holistic_analyzer = HolisticAnalyzer()
+app = FastAPI(title="mogzilla",version="0.1.0",description="Local visual portrait scoring and explainable 2D geometry.")
+
+
+@app.get("/api/holistic/model")
+def holistic_model_status():
+    return holistic_analyzer.status()
+
+
+@app.get("/api/holistic/method")
+def holistic_method():
+    report = ROOT/"reports/holistic/evaluation.json"
+    evaluation = json.loads(report.read_text(encoding="utf-8")) if report.is_file() else None
+    if evaluation:
+        evaluation = {k:v for k,v in evaluation.items() if k!="rows"}
+    return {"model":holistic_analyzer.status(),"evaluation":evaluation}
+
+
+@app.post("/api/holistic/analyze")
+async def holistic_analyze(request: Request,x: float | None = None,y: float | None = None,width: float | None = None,height: float | None = None):
+    coordinates = [x,y,width,height]
+    if any(v is not None for v in coordinates) and not all(v is not None for v in coordinates):
+        raise HTTPException(422,"Передайте все четыре координаты области лица.")
+    data = await read_photo(request)
+    try:
+        return await run_in_threadpool(holistic_analyzer.analyze,data,coordinates if x is not None else None)
+    except ValueError as exc:
+        raise HTTPException(422,str(exc)) from exc
+    except ModelUnavailable as exc:
+        raise HTTPException(503,str(exc)) from exc
 
 
 @app.middleware("http")
