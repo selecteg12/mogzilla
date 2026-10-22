@@ -1,4 +1,6 @@
 **
+!.dockerignore
+!Dockerfile.vercel
 !pyproject.toml
 !vercel.json
 !requirements.txt

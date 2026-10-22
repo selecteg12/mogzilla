@@ -1,5 +1,6 @@
 **
 !Dockerfile
+!Dockerfile.vercel
 !requirements-runtime.txt
 !backend/
 !backend/**
@@ -19,11 +20,16 @@ backend/**/__pycache__/
 !scripts/
 !scripts/__init__.py
 !scripts/serve.py
+!scripts/serve_mogzilla.py
 !scripts/download_holistic_models.py
 !training/
 !training/checkpoints/
 !training/checkpoints/selected.pt
 !training/checkpoints/regions-selected.pt
+!training/checkpoints/holistic/
+!training/checkpoints/holistic/personal-preference.json
+!training/checkpoints/holistic/personal-preference.npz
+!training/checkpoints/holistic/personal-visual.pt
 !reports/
 !reports/run/
 !reports/run/evaluation.json

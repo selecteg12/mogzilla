@@ -1,0 +1,35 @@
+FROM node:24-bookworm-slim AS frontend
+WORKDIR /build/frontend
+RUN npm install --global pnpm@11.25.0
+COPY frontend/package.json frontend/pnpm-lock.yaml frontend/pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
+COPY frontend/ ./
+RUN pnpm run build
+
+FROM python:3.12-slim-bookworm AS runtime
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    OMP_NUM_THREADS=2 \
+    MKL_NUM_THREADS=2 \
+    PORT=80 \
+    MPLCONFIGDIR=/tmp/mogzilla-matplotlib
+WORKDIR /app
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 libglib2.0-0 libegl1 libgles2 libportaudio2 \
+    && rm -rf /var/lib/apt/lists/*
+COPY requirements-runtime.txt ./
+RUN pip install --no-cache-dir torch==2.14.1+cpu torchvision==0.29.1+cpu --index-url https://download.pytorch.org/whl/cpu \
+    && pip install --no-cache-dir -r requirements-runtime.txt
+COPY backend/ ./backend/
+COPY scripts/serve_mogzilla.py scripts/download_holistic_models.py ./scripts/
+RUN python -m scripts.download_holistic_models
+COPY training/checkpoints/holistic/personal-preference.json \
+    training/checkpoints/holistic/personal-preference.npz \
+    training/checkpoints/holistic/personal-visual.pt ./training/checkpoints/holistic/
+COPY reports/holistic/evaluation.json ./reports/holistic/evaluation.json
+COPY --from=frontend /build/frontend/dist/ ./frontend/dist/
+RUN useradd --create-home --uid 10001 appuser
+USER appuser
+RUN python -m scripts.serve_mogzilla --check
+EXPOSE 80
+CMD ["python", "-m", "scripts.serve_mogzilla"]

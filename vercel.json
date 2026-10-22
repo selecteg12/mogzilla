@@ -1,13 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "fastapi",
-  "fluid": true,
-  "buildCommand": "npx --yes pnpm@11.25.0 --dir frontend install --frozen-lockfile && npx --yes pnpm@11.25.0 --dir frontend run build && python -m scripts.download_holistic_models && python -m scripts.serve_mogzilla --check",
-  "functions": {
-    "backend/app/main.py": {
-      "maxDuration": 120,
-      "includeFiles": "{training/checkpoints/holistic/**,frontend/dist/**,reports/holistic/evaluation.json,scripts/download_holistic_models.py}",
-      "excludeFiles": "{backend/tests/**,training/datasets/**,training/experiments/**,reports/qa/**,reports/afw/**,frontend/src/**,frontend/node_modules/**,.test-tmp*/**,.venv/**,**/__pycache__/**}"
-    }
-  }
+  "framework": null,
+  "fluid": true
 }
