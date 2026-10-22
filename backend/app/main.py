@@ -66,7 +66,7 @@ async def headers(request: Request,call_next):
 
 @app.get("/api/health")
 def health():
-    return {"status":"ok","service":"FaceMetrics AI","external_ai":False,"photo_storage":False}
+    return {"status":"ok","service":"mogzilla","external_ai":False,"photo_storage":False}
 
 
 @app.get("/api/model")

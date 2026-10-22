@@ -124,7 +124,7 @@ export default function App() {
       <section id="workspace" className="workspace section-anchor">
         <div className="analysis-heading"><h1>{photo ? <>Портрет.<br />Разбор в деталях.</> : <>Начнём<br />с портрета.</>}</h1><div><span className="service-status"><span className={`status-dot ${model?.ready && !backendError ? 'ready' : ''}`} />{backendError ? 'Нет соединения' : model?.ready ? 'Модель готова' : model ? 'Модель недоступна' : 'Подключаем модель…'}</span></div></div>
         {!photo ? <div className={`upload-area ${dragging ? 'drag-active' : ''}`} onDragOver={e => { e.preventDefault(); setDragging(true) }} onDragLeave={() => setDragging(false)} onDrop={e => { e.preventDefault(); setDragging(false); const file = e.dataTransfer.files[0]; if (file) void loadPhoto(file) }}>
-          <div className="upload-aside"><span>Фото для анализа</span><p>Расчёт начнётся автоматически.<br/>Фото обрабатывается локально.</p></div>
+          <div className="upload-aside"><span>Фото для анализа</span><p>Расчёт начнётся автоматически.<br/>Фото не сохраняется.</p></div>
           <div className="upload-content"><h2>Перетащи портрет сюда</h2><p>или выбери снимок с устройства.</p>
             <div className="upload-file-strip"><span>Файл не выбран</span><button className="upload-file-button" disabled={busy} onClick={upload}><span>Выбрать фото</span>{busy ? <LoaderCircle className="spin" size={17}/> : <Plus size={18} strokeWidth={1.4}/>}</button></div>
             <div className="upload-options"><span>JPG, PNG, WebP · до 10 МБ</span><button className="text-button" onClick={() => setCamera(true)} disabled={busy}><Camera size={14}/> Сделать снимок</button></div>
