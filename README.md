@@ -1,8 +1,10 @@
 # mogzilla
 
+**Live app: [facemetrics-ai.vercel.app](https://facemetrics-ai.vercel.app)** — the current Mogzilla release replaces the earlier FaceMetrics AI site at the same address.
+
 A Python-based portrait assessment app with a looksmaxxing-inspired 1–10 score, 478 facial landmarks and an interactive breakdown of eight facial regions. Upload a portrait or use the camera, inspect measurements and formulas, and explore example results from **sub 3** to **true adam**.
 
-The interface uses a light editorial design with a custom animated-reaction mascot. Image inference runs locally; the UI is currently in Russian.
+The interface uses a light editorial design with a custom animated-reaction mascot. Image inference runs on the Python backend; on the hosted site, photographs are processed in server memory. The UI is currently in Russian.
 
 ## What is looksmaxxing?
 
@@ -88,6 +90,22 @@ pnpm build
 
 Tests requiring undistributed research samples skip when those samples are absent. Scripts in `training/` cover the earlier landmark/detection experiments; scripts in `scripts/` cover scoring-profile preparation, fitting and evaluation.
 
+## Hosted release
+
+The current site is deployed to the existing Vercel project `facemetrics-ai` using **`Dockerfile.vercel`**, with the frontend and Python API served on one origin. `vercel.json` explicitly routes requests to the `mogzilla` container service. The image includes CPU PyTorch and the native libraries required by MediaPipe.
+
+The published scoring revision is **`33c59a04cba4`**, matching the approved local model. The release was built from commit [`c7e2f1d`](https://github.com/selecteg12/mogzilla/commit/c7e2f1d3dab9294b577a1cb659fe7b09729e38f6). Public API and browser-upload checks passed: the published gallery example returned **10.0 / true adam**, **478 landmarks** and **eight regions**.
+
+```powershell
+# Validate the built local bundle and approved scoring revision
+.\.venv\Scripts\python.exe -X utf8 -m scripts.serve_mogzilla --check
+
+# Check the public UI, assets, model revision and real photo inference
+.\.venv\Scripts\python.exe -X utf8 -m scripts.check_mogzilla_deployment https://facemetrics-ai.vercel.app
+```
+
+The hosted check uploads only the portrait already published in the example gallery. See [deployment notes](reports/DEPLOYMENT.md) for container commands, release details and the distinction from the earlier deployment configuration.
+
 ## Project layout
 
 ```text
@@ -106,4 +124,4 @@ Uploaded photographs are processed in memory. The app does not automatically sav
 
 SCUT-FBP5500, MEBeauty and upstream model assets retain their research-use conditions. This is a non-commercial research project; public repository visibility does not replace the licenses of datasets, weights, photographs or dependencies. The Pinterest collection is credited to its supplied source, with original URLs preserved where available.
 
-Docker and Vercel configuration files are retained from earlier iterations. The current scoring release is verified locally; those files alone do not establish a verified hosted deployment of this revision.
+The hosted release is verified on Vercel. The unqualified `Dockerfile`, `render.yaml`, `scripts/serve.py` and the existing GitHub Actions container workflow belong to the earlier implementation; use `Dockerfile.vercel` and the Mogzilla-specific validation commands above for the current release.
