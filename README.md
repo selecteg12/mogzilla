@@ -1,3 +1,5 @@
+**English** | [Русский](README.ru.md)
+
 # mogzilla
 
 **Live app: [facemetrics-ai.vercel.app](https://facemetrics-ai.vercel.app)** — the current Mogzilla release replaces the earlier FaceMetrics AI site at the same address.
@@ -57,7 +59,7 @@ Tier names are project-defined intervals applied to the displayed score. They ar
 
 ## Validation
 
-The latest usable annotated collection contains **717 fitting photographs and 200 held-out photographs**. On the held-out set, MAE is **1.20 points out of 10**, with **51%** of predictions within one point of the annotation.
+The evaluation used **717 fitting photographs and 200 held-out photographs**. On the held-out set, MAE is **1.20 points out of 10**, with **51%** of predictions within one point of the annotation.
 
 The evaluation is limited: some held-out results were inspected in earlier experiments, full separation by person is not established, and overlap with upstream datasets cannot be ruled out. A small selected collection does not establish universal ranking accuracy. See [the scoring report](reports/SCORING.md) and [the technical geometry audit](reports/HOLISTIC.md).
 
@@ -94,10 +96,10 @@ Tests requiring undistributed research samples skip when those samples are absen
 
 The current site is deployed to the existing Vercel project `facemetrics-ai` using **`Dockerfile.vercel`**, with the frontend and Python API served on one origin. `vercel.json` explicitly routes requests to the `mogzilla` container service. The image includes CPU PyTorch and the native libraries required by MediaPipe.
 
-The published scoring revision is **`33c59a04cba4`**, matching the approved local model. The release was built from commit [`c7e2f1d`](https://github.com/selecteg12/mogzilla/commit/c7e2f1d3dab9294b577a1cb659fe7b09729e38f6). Public API and browser-upload checks passed: the published gallery example returned **10.0 / true adam**, **478 landmarks** and **eight regions**.
+The published scoring revision is **`33c59a04cba4`**, the same revision used locally. The release was built from commit [`c7e2f1d`](https://github.com/selecteg12/mogzilla/commit/c7e2f1d3dab9294b577a1cb659fe7b09729e38f6). Public API and browser-upload checks passed: the published gallery example returned **10.0 / true adam**, **478 landmarks** and **eight regions**.
 
 ```powershell
-# Validate the built local bundle and approved scoring revision
+# Check the local build and scoring revision
 .\.venv\Scripts\python.exe -X utf8 -m scripts.serve_mogzilla --check
 
 # Check the public UI, assets, model revision and real photo inference
@@ -124,4 +126,4 @@ Uploaded photographs are processed in memory. The app does not automatically sav
 
 SCUT-FBP5500, MEBeauty and upstream model assets retain their research-use conditions. This is a non-commercial research project; public repository visibility does not replace the licenses of datasets, weights, photographs or dependencies. The Pinterest collection is credited to its supplied source, with original URLs preserved where available.
 
-The hosted release is verified on Vercel. The unqualified `Dockerfile`, `render.yaml`, `scripts/serve.py` and the existing GitHub Actions container workflow belong to the earlier implementation; use `Dockerfile.vercel` and the Mogzilla-specific validation commands above for the current release.
+For the current Vercel release, use `Dockerfile.vercel` and the Mogzilla-specific commands above. The older `Dockerfile`, `render.yaml`, `scripts/serve.py` and the existing GitHub Actions container workflow belong to the earlier implementation.
