@@ -4,9 +4,9 @@
 
 **[Open Mogzilla](https://mogzilla.2-27-32-143.sslip.io/)**
 
-A Python-based portrait assessment app with a looksmaxxing-inspired 1–10 score, 478 facial landmarks and an interactive breakdown of eight facial regions. Upload a portrait or use the camera, inspect measurements and formulas, and explore example results from **sub 3** to **true adam**.
+A Python app for portrait analysis. It detects 478 facial landmarks, checks image quality, and shows measurements for eight facial regions. Upload a photo, use the camera, or open an example from the gallery.
 
-The interface uses a light editorial design with a custom animated-reaction mascot. Image inference runs on the Python backend; on the hosted site, photographs are processed in server memory. The UI is currently in Russian.
+The app has an animated character that reacts to the result. Image inference runs on the Python backend; on the hosted site, photographs are processed in server memory. The UI is currently in Russian.
 
 ## Screenshots
 
@@ -42,7 +42,7 @@ mogzilla borrows this vocabulary for its presentation and category names. Aesthe
 - Landmark overlays, measured segments, formulas and coordinate-level explanations.
 - Technical checks for face size, pose, cropping, blur, lighting and closed eyes.
 - Crop/reflection sensitivity checks and JSON export without the uploaded photograph.
-- An example gallery accessible from **Examples** in the top navigation and the homepage poster.
+- An example gallery linked from the menu and the home page.
 
 ## Data and annotations
 
@@ -102,21 +102,11 @@ pnpm build
 
 Tests requiring undistributed research samples skip when those samples are absent. Scripts in `training/` cover the earlier landmark/detection experiments; scripts in `scripts/` cover scoring-profile preparation, fitting and evaluation.
 
-## Vercel deployment record
-
-The previous deployment ran on Vercel in the `facemetrics-ai` project. Its **`Dockerfile.vercel`** served the frontend and Python API from one origin. The container included CPU PyTorch and the native libraries required by MediaPipe.
-
-That deployment used scoring revision **`33c59a04cba4`**. The release was built from commit [`c7e2f1d`](https://github.com/selecteg12/mogzilla/commit/c7e2f1d3dab9294b577a1cb659fe7b09729e38f6). Public API and browser-upload checks passed: the published gallery example returned **10.0 / true adam**, **478 landmarks** and **eight regions**.
+Check the local build and model revision
 
 ```powershell
-# Check the local build and scoring revision
 .\.venv\Scripts\python.exe -X utf8 -m scripts.serve_mogzilla --check
-
-# Command used to check the previous Vercel deployment
-.\.venv\Scripts\python.exe -X utf8 -m scripts.check_mogzilla_deployment https://facemetrics-ai.vercel.app
 ```
-
-That deployment check used a portrait from the public example gallery. The container commands and release details are in the [deployment notes](reports/DEPLOYMENT.md).
 
 ## Project layout
 

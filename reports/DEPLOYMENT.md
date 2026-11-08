@@ -1,8 +1,8 @@
 # Публикация Mogzilla
 
-**Рабочий сайт: [facemetrics-ai.vercel.app](https://facemetrics-ai.vercel.app).** Mogzilla заменил прежнюю версию FaceMetrics AI на том же адресе. Актуальная версия опубликована 22 октября 2026 года; загрузка фотографии через браузер повторно проверена 23 октября.
+**Текущее демо** — [Mogzilla](https://mogzilla.2-27-32-143.sslip.io/). Ниже сохранены сведения о прежней контейнерной сборке от 22 октября 2026 года и её проверке 23 октября.
 
-## Текущий выпуск
+## Прежний выпуск
 
 | Параметр | Значение |
 | --- | --- |
@@ -22,7 +22,7 @@
 
 React и FastAPI работают на одном домене. Браузер отправляет фото Python-серверу по HTTPS; инференс выполняется на CPU хостинга. Приложение обрабатывает загруженные фото в оперативной памяти, не сохраняет их автоматически и не вызывает внешние AI API. После публикации обработка происходит на сервере, а не на компьютере посетителя.
 
-Текущий выпуск использует контейнерный runtime Vercel и сервис `mogzilla`. В `vercel.json` явно заданы `runtime: "container"`, `entrypoint: "Dockerfile.vercel"` и перенаправление всех запросов в этот сервис. Контейнерные сервисы Vercel находятся в beta: [документация runtime](https://vercel.com/docs/functions/runtimes/container), [настройка сервисов](https://vercel.com/docs/services/config-reference).
+Прежняя сборка использовала контейнерный сервис `mogzilla`. В `vercel.json` указаны `runtime: "container"`, `entrypoint: "Dockerfile.vercel"` и перенаправление всех запросов в этот сервис.
 
 Файлы текущего комплекта:
 
@@ -43,15 +43,15 @@ React и FastAPI работают на одном домене. Браузер �
 .\.venv\Scripts\python.exe -X utf8 -m scripts.serve_mogzilla --check
 ```
 
-Проверка публичного адреса:
+Проверка текущего демо:
 
 ```powershell
-.\.venv\Scripts\python.exe -X utf8 -m scripts.check_mogzilla_deployment https://facemetrics-ai.vercel.app
+.\.venv\Scripts\python.exe -X utf8 -m scripts.check_mogzilla_deployment https://mogzilla.2-27-32-143.sslip.io/
 ```
 
 Скрипт проверяет HTML и основные ресурсы интерфейса, `/api/holistic/model`, `/api/holistic/method` и реальный POST в `/api/holistic/analyze`. Для анализа используется только фотография, уже опубликованная в галерее приложения: `frontend/src/assets/examples/example-03.png`.
 
-Проверка production прошла без авторизации Vercel:
+При проверке прежнего публичного выпуска были получены следующие результаты.
 
 - модель готова, активная ревизия `33c59a04cba4`;
 - три основных ресурса интерфейса доступны;
@@ -77,12 +77,6 @@ python -m scripts.check_mogzilla_deployment http://127.0.0.1:8000
 ```
 
 Актуальный образ собран и проверен на Linux в Vercel; локальная Docker-сборка на Windows не выполнялась.
-
-## Повторная публикация и откат
-
-Публиковать нужно из ветки с актуальным `vercel.json` и `Dockerfile.vercel`. Сначала проверяется preview с ожидаемой ревизией, затем создаётся production-выпуск из того же коммита и проверяется публичный адрес. Защита адресов отдельных выпусков сохранена; посетителям входить в Vercel для открытия основного сайта не требуется. Секреты доступа и локальные файлы окружения в Git не добавляются.
-
-Предыдущий production-выпуск для отката: `dpl_3xfvs6FBotkKSMiypQDzH3dLvydL`. Он содержит прежнее приложение FaceMetrics AI, поэтому откат восстановит старый интерфейс и модель.
 
 ## Конфигурация предыдущей версии
 
